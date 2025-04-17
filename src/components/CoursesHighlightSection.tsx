@@ -16,7 +16,7 @@ const courses = [
     description: 'Domine integrações complexas, APIs e automações personalizadas.',
     level: 'Intermediário/Avançado',
     href: '/cursos/integ-avancadas',
-    color: 'bg-verde-lima text-azul-petroleo',
+    color: 'bg-ciano-eletrico text-azul-petroleo',
   },
 ]
 
@@ -36,7 +36,7 @@ export default function CoursesHighlightSection() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Link href="/cursos" className="px-6 py-3 rounded-full bg-magenta text-white font-semibold shadow-lg hover:scale-105 transition-transform">
+          <Link href="/cursos" className="px-6 py-3 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold shadow-lg hover:scale-105 transition-transform">
             Ver todos os cursos
           </Link>
         </div>
