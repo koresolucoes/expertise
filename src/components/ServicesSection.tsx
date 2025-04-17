@@ -37,14 +37,12 @@ export default function ServicesSection() {
         <h2 className="text-3xl md:text-4xl font-bold text-ciano-eletrico mb-10 text-center">Nossos Serviços</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {services.map((service) => (
-            <Link key={service.title} href={service.href} passHref>
-              <a className="group flex flex-col items-center bg-azul-petroleo rounded-xl p-8 shadow-lg hover:scale-105 transition-transform hover:bg-opacity-80">
-                <span className="text-5xl mb-4 group-hover:animate-bounce">{service.icon}</span>
-                <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
-                <p className="text-gray-300 text-center text-sm mb-2">{service.description}</p>
-                <span className="text-ciano-eletrico font-medium mt-2 group-hover:underline">Saiba mais</span>
-              </a>
-            </Link>
+            <Link key={service.title} href={service.href} className="group flex flex-col items-center bg-azul-petroleo rounded-xl p-8 shadow-lg hover:scale-105 transition-transform hover:bg-opacity-80">
+  <span className="text-5xl mb-4 group-hover:animate-bounce">{service.icon}</span>
+  <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
+  <p className="text-gray-300 text-center text-sm mb-2">{service.description}</p>
+  <span className="text-ciano-eletrico font-medium mt-2 group-hover:underline">Saiba mais</span>
+</Link>
           ))}
         </div>
       </div>
