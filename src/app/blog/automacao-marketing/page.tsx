@@ -11,7 +11,7 @@ export default function AutomacaoMarketingPage() {
     <main className="min-h-screen bg-black bg-opacity-80 py-8 px-2">
       <div className="max-w-3xl mx-auto">
         <Link href="/blog" className="inline-block mb-4 text-ciano-eletrico underline">← Voltar para o Blog</Link>
-        <Image src="/blog-images/automacao-marketing.jpg" alt="Automação de marketing com gráficos e ferramentas digitais" width={900} height={400} className="rounded-xl mb-6 w-full object-cover max-h-72" />
+        <Image src="/blog-images/automacao-marketing.jpg" alt="Automação de marketing com gráficos e ferramentas digitais" width={720} height={720} className="rounded-xl mb-6 w-full object-cover max-h-72" />
         <h1 className="text-3xl md:text-4xl font-bold text-ciano-eletrico mb-6">Guia Definitivo de Automação de Marketing: Estratégias, Ferramentas e Implementação</h1>
         <span className="text-gray-400 text-xs mb-2 block">2025-04-17 — Bloomreach</span>
         <p className="text-lg mb-6">A automação de marketing revolucionou a forma como empresas se relacionam com clientes, tornando processos mais eficientes, personalizados e escaláveis. Neste guia, você aprenderá o que é automação de marketing, suas vantagens e como implementar uma estratégia vencedora.</p>
