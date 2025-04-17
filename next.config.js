@@ -1,6 +1,6 @@
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
 
-const repo = isGitHubActions ? '/n8ntestesite' : ''
+const repo = isGitHubActions ? '/expertise' : ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
