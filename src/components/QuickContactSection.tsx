@@ -2,6 +2,7 @@
 // QuickContactSection.tsx
 // Formulário de contato rápido
 import React, { useState } from 'react'
+import { supabase } from '../utils/supabaseClient'
 
 export default function QuickContactSection() {
   const [status, setStatus] = useState<'idle'|'sucesso'|'erro'>('idle')
@@ -10,7 +11,22 @@ export default function QuickContactSection() {
     <section id="contato" className="py-16 bg-black bg-opacity-80">
       <div className="max-w-xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-ciano-eletrico mb-8 text-center">Contato Rápido</h2>
-        <form className="flex flex-col gap-4" onSubmit={e => { e.preventDefault(); setStatus('sucesso') }}>
+        <form className="flex flex-col gap-4" onSubmit={async e => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const nome = (form.nome as HTMLInputElement).value;
+            const email = (form.email as HTMLInputElement).value;
+            const telefone = (form.telefone as HTMLInputElement).value;
+            const mensagem = (form.mensagem as HTMLTextAreaElement).value;
+            setStatus('idle');
+            const { error } = await supabase.from('contatos').insert([{ nome, email, telefone, mensagem }]);
+            if (error) {
+              setStatus('erro');
+            } else {
+              setStatus('sucesso');
+              form.reset();
+            }
+          }}>
           <input required name="nome" placeholder="Nome" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
           <input required name="email" type="email" placeholder="E-mail" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
           <input name="telefone" placeholder="Telefone" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
