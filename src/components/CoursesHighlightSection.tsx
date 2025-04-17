@@ -8,14 +8,14 @@ const courses = [
     title: 'n8n Essencial',
     description: 'Aprenda do zero ao avançado sobre automação com n8n.',
     level: 'Iniciante ao Avançado',
-    href: '/expertise/cursos/n8n-essencial',
+    href: '/cursos/n8n-essencial',
     color: 'bg-ciano-eletrico text-azul-petroleo',
   },
   {
     title: 'Integrações Avançadas',
     description: 'Domine integrações complexas, APIs e automações personalizadas.',
     level: 'Intermediário/Avançado',
-    href: '/expertise/cursos/integ-avancadas',
+    href: '/cursos/integ-avancadas',
     color: 'bg-verde-lima text-azul-petroleo',
   },
 ]
@@ -36,7 +36,7 @@ export default function CoursesHighlightSection() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Link href="/expertise/cursos" className="px-6 py-3 rounded-full bg-magenta text-white font-semibold shadow-lg hover:scale-105 transition-transform">
+          <Link href="/cursos" className="px-6 py-3 rounded-full bg-magenta text-white font-semibold shadow-lg hover:scale-105 transition-transform">
             Ver todos os cursos
           </Link>
         </div>
