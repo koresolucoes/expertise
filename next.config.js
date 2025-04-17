@@ -1,19 +1,16 @@
-/** next.config.js */
+const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
+
+const repo = isGitHubActions ? '/n8ntestesite' : ''
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. Generación estática compatible con App Router
-  output: 'export',
-
-  // 2. Prefijo de ruta y de activos para GitHub Pages
-  basePath: '/n8ntestesite',
-  assetPrefix: '/n8ntestesite/',
-
-  // 3. Generar carpetas con index.html para cada ruta anidada
+  basePath: repo,
+  assetPrefix: repo + '/',
   trailingSlash: true,
-
-  // 4. Opcional: deshabilitar optimizaciones de imágenes si no usas Image Optimization
+  output: 'export',
   images: {
     unoptimized: true,
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
