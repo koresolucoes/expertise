@@ -20,12 +20,12 @@ export default function SobrePage() {
         <h2 className="text-xl font-semibold text-ciano-eletrico mb-2">Equipe</h2>
         <div className="flex flex-wrap gap-6">
           <div className="bg-black bg-opacity-40 rounded-xl p-4 flex-1 min-w-[180px]">
-            <span className="font-bold text-ciano-eletrico">João Silva</span><br/>
+            <span className="font-bold text-ciano-eletrico">Luciano Gutierrez</span><br/>
             <span className="text-gray-300">Especialista em n8n</span>
           </div>
           <div className="bg-black bg-opacity-40 rounded-xl p-4 flex-1 min-w-[180px]">
-            <span className="font-bold text-ciano-eletrico">Maria Souza</span><br/>
-            <span className="text-gray-300">Instrutora & Suporte</span>
+            <span className="font-bold text-ciano-eletrico">Fabricio Gonçalves</span><br/>
+            <span className="text-gray-300">Instrutor & Suporte</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 // Página detalhada de Suporte Técnico
 import React from 'react'
+import Link from 'next/link'
 
 export default function SuportePage() {
   return (
@@ -12,7 +13,7 @@ export default function SuportePage() {
         <li>Monitoramento proativo</li>
         <li>Resolução rápida de incidentes</li>
       </ul>
-      <a href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Fale com nosso suporte</a>
+      <Link href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Fale com nosso suporte</Link>
     </section>
   )
 }

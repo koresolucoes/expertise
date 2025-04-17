@@ -1,5 +1,6 @@
 // Página individual de curso (exemplo para Integrações Avançadas)
 import React from 'react'
+import Link from 'next/link'
 
 export default function IntegAvancadasPage() {
   return (
@@ -21,7 +22,7 @@ export default function IntegAvancadasPage() {
           <li>Monitoramento e troubleshooting</li>
         </ol>
         <span className="text-magenta font-bold text-lg mb-2 block">R$ 599</span>
-        <a href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Inscreva-se</a>
+        <Link href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Inscreva-se</Link>
       </div>
     </main>
   )

@@ -1,5 +1,6 @@
 // Página detalhada de Configuração & Implementação
 import React from 'react'
+import Link from 'next/link'
 
 export default function ImplementacaoPage() {
   return (
@@ -12,7 +13,7 @@ export default function ImplementacaoPage() {
         <li>Exemplos de automações: notificações, ETL, sincronização de dados</li>
         <li>Documentação e treinamento</li>
       </ul>
-      <a href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Solicite orçamento</a>
+      <Link href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Solicite orçamento</Link>
     </section>
   )
 }

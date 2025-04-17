@@ -1,5 +1,6 @@
 // Página individual de curso (exemplo para n8n Essencial)
 import React from 'react'
+import Link from 'next/link'
 
 export default function N8nEssencialPage() {
   return (
@@ -21,7 +22,7 @@ export default function N8nEssencialPage() {
           <li>Boas práticas e dicas avançadas</li>
         </ol>
         <span className="text-magenta font-bold text-lg mb-2 block">R$ 399</span>
-        <a href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Inscreva-se</a>
+        <Link href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Inscreva-se</Link>
       </div>
     </main>
   )

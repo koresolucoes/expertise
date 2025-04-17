@@ -1,5 +1,6 @@
 // Página detalhada de Cursos
 import React from 'react'
+import Link from 'next/link'
 
 export default function CursosPage() {
   return (
@@ -11,7 +12,7 @@ export default function CursosPage() {
         <li>Conteúdo atualizado e focado no mercado</li>
         <li>Certificação e suporte ao aluno</li>
       </ul>
-      <a href="/cursos" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Ver todos os cursos</a>
+      <Link href="/cursos" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Ver todos os cursos</Link>
     </section>
   )
 }

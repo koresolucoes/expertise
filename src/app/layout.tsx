@@ -19,10 +19,15 @@ export const metadata: Metadata = {
   robots: 'index, follow',
 }
 
+import MainNav from '@/components/MainNav';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className="dark">
-      <body className={`${inter.className} bg-azul-petroleo text-white min-h-screen`}>{children}</body>
+      <body className={`${inter.className} bg-azul-petroleo text-white min-h-screen`}>
+        <MainNav />
+        {children}
+      </body>
     </html>
   )
 }
