@@ -22,13 +22,13 @@ export default function MainNav() {
         </ul>
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-ciano-eletrico"
+          className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-kore-ciano"
           aria-label="Abrir menu"
           onClick={() => setOpen(!open)}
         >
-          <span className={`block w-7 h-1 bg-ciano-eletrico rounded transition-all duration-200 ${open ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`block w-7 h-1 bg-ciano-eletrico rounded my-1 transition-all duration-200 ${open ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-7 h-1 bg-ciano-eletrico rounded transition-all duration-200 ${open ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          <span className={`block w-7 h-1 bg-kore-ciano rounded transition-all duration-200 ${open ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-7 h-1 bg-kore-ciano rounded my-1 transition-all duration-200 ${open ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-7 h-1 bg-kore-ciano rounded transition-all duration-200 ${open ? '-rotate-45 -translate-y-2' : ''}`}></span>
         </button>
       </div>
       {/* Mobile Menu Overlay */}
