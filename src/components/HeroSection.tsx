@@ -30,10 +30,10 @@ export default function HeroSection() {
           Cursos, configuração, suporte e soluções sob medida
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-200">
-          <a href="/cursos" className="cta-btn">
+          <a href="/expertise/cursos" className="cta-btn">
             Explore Nossos Cursos
           </a>
-          <a href="/automacao-ia" className="cta-btn bg-kore-destaque text-kore-azul hover:brightness-110">
+          <a href="/expertise/automacao-ia" className="cta-btn bg-kore-destaque text-kore-azul hover:brightness-110">
             Saiba Mais Sobre Automação
           </a>
         </div>
