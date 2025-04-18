@@ -1,16 +1,15 @@
-const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
-
-const repo = isGitHubActions ? '/expertise' : ''
+const isProd = process.env.NODE_ENV === 'production';
+const repo = 'expertise';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: repo,
-  assetPrefix: repo + '/',
+  basePath: isProd ? `/${repo}` : '',
+  assetPrefix: isProd ? `/${repo}/` : '',
   trailingSlash: true,
   output: 'export',
   images: {
     unoptimized: true,
   },
-}
-/** @type {import('next').NextConfig} */
-module.exports = nextConfig
+};
+
+module.exports = nextConfig;
