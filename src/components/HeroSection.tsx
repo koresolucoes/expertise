@@ -12,7 +12,7 @@ export default function HeroSection() {
         Soluções inteligentes para empresas que buscam eficiência, integração e inovação através da automação de processos.
       </p>
       <a href="#contato" className="px-8 py-4 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold text-lg shadow-lg hover:scale-105 transition-transform animate-fade-in delay-200">
-        Solicite uma Consultoria Gratuita
+        AGENDE SUA CONSULTORIA GRATUITA
       </a>
       {/* Elemento visual animado para remeter a fluxos de dados/nós conectados */}
       <div className="absolute inset-0 pointer-events-none select-none animate-pulse-slow">

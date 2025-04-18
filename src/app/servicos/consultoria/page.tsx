@@ -13,7 +13,7 @@ export default function ConsultoriaPage() {
         <li>Prototipação de fluxos no n8n</li>
         <li>Recomendações técnicas e roadmap</li>
       </ul>
-      <Link href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">Solicite uma proposta</Link>
+      <Link href="/contato" className="inline-block mt-4 px-6 py-2 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold hover:scale-105 transition-transform">AGENDE SUA CONSULTORIA GRATUITA</Link>
     </section>
   )
 }
