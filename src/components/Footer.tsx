@@ -18,7 +18,7 @@ export default function Footer() {
           <Link href="/termos-de-uso" className="hover:text-ciano-eletrico">Termos de Uso</Link>
         </div>
         <div>
-          <span>© {new Date().getFullYear()} Automação Expertise. Todos os direitos reservados.</span>
+          <span>© {new Date().getFullYear()} Kore. Todos os direitos reservados.</span>
         </div>
       </div>
     </footer>

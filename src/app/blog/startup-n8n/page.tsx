@@ -1,19 +1,41 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import BlogComments from '@/components/BlogComments'
+import React from 'react';
+import BlogLayout from '@/components/BlogLayout';
 
-const nextHref = '/blog/comparativo-automacao'
-const prevHref = '/blog/caso-zapier'
+const nextHref = '/blog/comparativo-automacao';
+const prevHref = '/blog/caso-zapier';
+const suggestions = [
+  { href: '/blog/ia-generativa-automacao', title: 'IA Generativa em Automação de Conteúdo' },
+  { href: '/blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
+];
 
 export default function StartupN8nPage() {
   return (
-    <main className="min-h-screen bg-black bg-opacity-80 py-8 px-2">
-      <div className="max-w-3xl mx-auto">
-        <Link href="/blog" className="inline-block mb-4 text-ciano-eletrico underline">← Voltar para o Blog</Link>
-        <Image src="/blog-images/startup-n8n.jpg" alt="Startup brasileira em reunião de automação com n8n" width={900} height={400} className="rounded-xl mb-6 w-full object-cover max-h-72" />
-        <h1 className="text-3xl md:text-4xl font-bold text-ciano-eletrico mb-6">Transformação Digital com n8n: Caso de Sucesso em Startup Brasileira</h1>
-        <span className="text-gray-400 text-xs mb-2 block">2025-03-28 — Medium</span>
+    <BlogLayout
+      title="Como uma Startup Brasileira Escalou com n8n"
+      image="/blog-images/startup-n8n.jpg"
+      date="2025-01-25"
+      author="Startup Brasil"
+      prevHref={prevHref}
+      nextHref={nextHref}
+      suggestions={suggestions}
+      postSlug="startup-n8n"
+    >
+      {/* HERO ARTIGO */}
+      <section className="flex flex-col items-center justify-center text-center py-12 md:py-20 relative">
+        <div className="absolute inset-0 z-0 pointer-events-none select-none animate-fade-in">
+          <svg width="100%" height="100%" viewBox="0 0 1440 400" fill="none" className="w-full h-full">
+            <defs>
+              <radialGradient id="g1" cx="50%" cy="50%" r="80%" fx="50%" fy="50%" gradientTransform="rotate(25)">
+                <stop offset="0%" stopColor="#00cfd1" stopOpacity="0.10" />
+                <stop offset="100%" stopColor="#0a1a2f" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="1440" height="400" fill="url(#g1)" />
+          </svg>
+        </div>
+      </section>
+      {/* CONTEÚDO DO ARTIGO */}
+      <section className="max-w-3xl mx-auto px-4 py-8">
         <p className="text-lg mb-6">Veja como uma startup brasileira inovou ao adotar o n8n para automatizar processos internos, ganhar escala e superar desafios de crescimento.</p>
         <h2 className="text-2xl font-semibold mt-8 mb-2">Cenário inicial</h2>
         <p className="mb-4">A startup enfrentava dificuldades para integrar diferentes sistemas (CRM, atendimento, financeiro) e dependia de tarefas manuais para consolidar dados e acionar notificações.</p>
@@ -35,19 +57,13 @@ export default function StartupN8nPage() {
           <li>Importância de mapear processos antes de automatizar</li>
           <li>Monitoramento constante para evitar falhas</li>
         </ul>
-        <nav className="flex justify-between mt-10">
-          <Link href={prevHref} className="text-ciano-eletrico underline">← Artigo anterior</Link>
-          <Link href={nextHref} className="text-ciano-eletrico underline">Próximo artigo →</Link>
-        </nav>
-        <section className="mb-8">
-          <h3 className="text-xl text-ciano-eletrico font-semibold mb-2">Sugestões de leitura</h3>
-          <ul className="list-disc pl-6">
-            <li><Link href="/blog/ia-generativa-automacao" className="underline text-ciano-eletrico">IA Generativa em Automação de Conteúdo</Link></li>
-            <li><Link href="/blog/metricas-kpis-automacao" className="underline text-ciano-eletrico">Métricas e KPIs em Automação</Link></li>
-          </ul>
-        </section>
-        <BlogComments postSlug="startup-n8n" />
-      </div>
-    </main>
-  )
+      </section>
+      {/* DEPOIMENTO DE LEITOR */}
+      <section className="max-w-2xl mx-auto px-4 py-12">
+        <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos leitores</h2>
+
+      </section>
+      
+    </BlogLayout>
+  );
 }

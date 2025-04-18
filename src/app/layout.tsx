@@ -5,21 +5,22 @@ import type { Metadata } from 'next'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Automação com n8n | Consultoria e Cursos',
-  description: 'Especialistas em automação de processos com n8n. Consultoria, implementação, cursos e suporte para empresas.',
-  keywords: ['n8n', 'automação', 'consultoria', 'integração', 'cursos', 'suporte'],
+  title: 'Kore | Automação Inteligente',
+  description: 'Especialistas em automação de processos. Consultoria, implementação, cursos e suporte para empresas.',
+  keywords: ['kore', 'automação', 'consultoria', 'integração', 'cursos', 'suporte'],
   openGraph: {
-    title: 'Automação com n8n | Consultoria e Cursos',
-    description: 'Especialistas em automação de processos com n8n. Consultoria, implementação, cursos e suporte para empresas.',
+    title: 'Kore | Automação Inteligente',
+    description: 'Especialistas em automação de processos. Consultoria, implementação, cursos e suporte para empresas.',
     type: 'website',
     locale: 'pt_BR',
     url: 'https://seudominio.com',
-    siteName: 'Automação n8n',
+    siteName: 'Kore',
   },
   robots: 'index, follow',
 }
 
 import MainNav from '@/components/MainNav';
+import Footer from '@/components/Footer';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} bg-azul-petroleo text-white min-h-screen`}>
         <MainNav />
         {children}
+          <Footer />
       </body>
     </html>
   )
