@@ -58,7 +58,7 @@ export default function BlogLayout({
         </div>
         <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-4">
           <Link href="/blog" className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</Link>
-          <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" />
+          <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" unoptimized />
           <h1 className="text-3xl md:text-4xl font-black text-kore-ciano mb-4">{title}</h1>
           <span className="text-gray-400 text-xs mb-2 block">{date} — {author}</span>
         </div>
