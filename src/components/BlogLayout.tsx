@@ -37,13 +37,9 @@ export default function BlogLayout({
   postSlug,
   children,
 }: BlogLayoutProps) {
-  // Usa o basePath do ambiente para compatibilidade com SSR/SSG
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const withBase = (url?: string) => (url ? `${basePath}${url}` : undefined);
-  const suggestionsWithBase = suggestions.map(s => ({
-    ...s,
-    href: withBase(s.href),
-  }));
+  // Não concatene manualmente basePath! O Next.js já faz isso automaticamente.
+  // Use os hrefs e srcs relativos à raiz do app.
+  const suggestionsWithBase = suggestions;
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black pb-0">
@@ -61,7 +57,7 @@ export default function BlogLayout({
           </svg>
         </div>
         <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-4">
-          <a href={withBase('/blog')} className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</a>
+          <a href="/blog" className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</a>
           <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" />
           <h1 className="text-3xl md:text-4xl font-black text-kore-ciano mb-4">{title}</h1>
           <span className="text-gray-400 text-xs mb-2 block">{date} — {author}</span>
@@ -72,9 +68,9 @@ export default function BlogLayout({
       <section className="max-w-3xl mx-auto px-4 py-8">
         {children}
         <BlogNav
-          prevHref={withBase(prevHref)}
+          prevHref={prevHref}
           prevLabel={prevLabel}
-          nextHref={withBase(nextHref)}
+          nextHref={nextHref}
           nextLabel={nextLabel}
         />
       </section>
@@ -87,7 +83,7 @@ export default function BlogLayout({
             <ul className="list-disc pl-6">
               {suggestionsWithBase.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href!} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
+                  <Link href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
                 </li>
               ))}
             </ul>
