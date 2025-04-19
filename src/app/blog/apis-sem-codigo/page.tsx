@@ -1,7 +1,6 @@
 // Estrutura de artigo individual
 import React from 'react'
 import BlogLayout from '@/components/BlogLayout'
-import Image from 'next/image'
 import Link from 'next/link'
 
 
