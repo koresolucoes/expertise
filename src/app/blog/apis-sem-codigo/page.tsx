@@ -72,23 +72,7 @@ export default function BlogPostPage() {
       <section className="max-w-3xl mx-auto px-4 pb-16">
         
       </section>
-      {/* CTA FINAL */}
-      <section className="w-full flex justify-center py-10 bg-gradient-to-t from-black via-kore-cinza to-transparent">
-        <div className="bg-kore-ciano/90 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6 shadow-xl max-w-2xl w-full">
-          <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold text-kore-azul mb-2">Quer receber novidades e dicas?</h3>
-            <p className="text-kore-azul mb-2">Fale com a equipe Kore e entre para nossa lista VIP.</p>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center justify-center md:justify-start">
-              <a href="mailto:koresoluciones@outlook.com" className="underline hover:text-kore-destaque">koresoluciones@outlook.com</a>
-              <span className="hidden md:inline">|</span>
-              <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
-            </div>
-          </div>
-          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
-        </div>
-      </section>
 
-      {/* COMENTÁRIOS */}
       <section className="max-w-3xl mx-auto px-4 pb-16">
         
       </section>
