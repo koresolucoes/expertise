@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 export default function MainNav() {
   const [open, setOpen] = useState(false);
-  const basePath = process.env.NODE_ENV === 'production' ? '/n8ntestesite' : '';
 
   return (
     <nav className="w-full flex justify-center py-4 px-2 bg-black bg-opacity-80 border-b border-ciano-eletrico z-30 sticky top-0">
