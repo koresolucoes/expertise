@@ -115,7 +115,7 @@ export default function AutomacaoIaPage() {
         <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos clientes</h2>
         <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
           
-<Image src="/cliente-exemplo.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
+<Image src="/expertise/blog-images/cliente-exemplo.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
           <blockquote className="italic text-gray-200 text-center mb-2">&ldquo;A automação da Kore revolucionou nosso atendimento e reduziu custos drasticamente. Recomendo para qualquer empresa que quer crescer com tecnologia!&rdquo;</blockquote>
           <span className="font-bold text-kore-destaque">Patrícia Lima</span>
           <span className="text-gray-400 text-sm">Head de Operações, Empresa X</span>

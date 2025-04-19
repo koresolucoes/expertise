@@ -61,7 +61,7 @@ export default function SobrePage() {
         <h2 className="text-2xl font-bold text-kore-destaque mb-8 text-center">Equipe</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-black bg-opacity-40 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Image src="/luciano-avatar.jpg" alt="Luciano Gutierrez" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
+            <Image src="/expertise/luciano-avatar.jpg" alt="Luciano Gutierrez" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
             <span className="font-bold text-ciano-eletrico">Luciano Gutierrez</span>
             <span className="text-gray-300 mb-1">Especialista em n8n</span>
             <span className="text-xs text-gray-400">Automação & Integração</span>
@@ -73,7 +73,7 @@ export default function SobrePage() {
             <span className="text-xs text-gray-400">Educação & Atendimento</span>
           </div>
           <div className="bg-black bg-opacity-40 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Image src="/beatriz-avatar.jpg" alt="Beatriz Covelo" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
+            <Image src="/expertise/beatriz-avatar.jpg" alt="Beatriz Covelo" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
             <span className="font-bold text-ciano-eletrico">Beatriz Covelo</span>
             <span className="text-gray-300 mb-1">Líder de Marketing e Vendas</span>
             <span className="text-xs text-gray-400">Estratégia & Relacionamento</span>

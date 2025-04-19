@@ -12,7 +12,7 @@ export default function StartupN8nPage() {
   return (
     <BlogLayout
       title="Como uma Startup Brasileira Escalou com n8n"
-      image="/expertise/blog-images/startup-n8n.jpg"
+      image="/expertise/blog-images/c"
       date="2025-01-25"
       author="Startup Brasil"
       prevHref={prevHref}
