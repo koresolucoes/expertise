@@ -74,7 +74,7 @@ export default function BlogLayout({
             <ul className="list-disc pl-6">
               {suggestions.map((s) => (
                 <li key={s.href}>
-                  <a href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</a>
+                  <Link href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
                 </li>
               ))}
             </ul>
