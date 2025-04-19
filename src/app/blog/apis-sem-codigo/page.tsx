@@ -68,24 +68,6 @@ export default function BlogPostPage() {
         </div>
       </section>
 
-      {/* COMENTÁRIOS */}
-      <section className="max-w-3xl mx-auto px-4 pb-16">
-        
-      </section>
-
-      <section className="max-w-3xl mx-auto px-4 pb-16">
-        
-      </section>
-      {/* DEPOIMENTO DE LEITOR */}
-      <section className="max-w-2xl mx-auto px-4 py-12">
-        <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos leitores</h2>
-        <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
-          <Image src="/expertise/leitor-exemplo.jpg" alt="Leitor satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
-          <blockquote className="italic text-gray-200 text-center mb-2">“As dicas do blog Kore facilitaram meu aprendizado em automação!”</blockquote>
-          <span className="font-bold text-kore-destaque">Lucas Oliveira</span>
-          <span className="text-gray-400 text-sm">Desenvolvedor Júnior</span>
-        </div>
-      </section>
       
     </BlogLayout>
   )
