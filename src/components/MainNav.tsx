@@ -3,13 +3,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
+
 export default function MainNav() {
   const [open, setOpen] = useState(false);
+  const basePath = process.env.NODE_ENV === 'production' ? '/n8ntestesite' : '';
+
   return (
     <nav className="w-full flex justify-center py-4 px-2 bg-black bg-opacity-80 border-b border-ciano-eletrico z-30 sticky top-0">
       <div className="flex w-full max-w-6xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="kore-logo.png" alt="Logo Kore" width={40} height={40} priority />
+          <Image src={`${basePath}/kore-logo.png`} alt="Logo Kore" width={40} height={40} priority />
           <span className="text-2xl font-bold text-white tracking-wide">Kore</span>
         </Link>
         {/* Desktop Menu */}
