@@ -1,5 +1,8 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import BlogNav from './BlogNav';
 import BlogComments from '@/components/BlogComments';
 
@@ -22,8 +25,6 @@ interface BlogLayoutProps {
   children: React.ReactNode;
 }
 
-import Link from 'next/link';
-
 export default function BlogLayout({
   title,
   image,
@@ -37,6 +38,15 @@ export default function BlogLayout({
   postSlug,
   children,
 }: BlogLayoutProps) {
+  const { basePath } = useRouter();
+
+  // Aplica el basePath si estamos en producción
+  const withBase = (url?: string) => (url ? `${basePath}${url}` : undefined);
+  const suggestionsWithBase = suggestions.map(s => ({
+    ...s,
+    href: withBase(s.href),
+  }));
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black pb-0">
       {/* HERO ARTIGO */}
@@ -53,7 +63,7 @@ export default function BlogLayout({
           </svg>
         </div>
         <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-4">
-          <a href="/blog" className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</a>
+          <a href={withBase('/blog')} className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</a>
           <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" />
           <h1 className="text-3xl md:text-4xl font-black text-kore-ciano mb-4">{title}</h1>
           <span className="text-gray-400 text-xs mb-2 block">{date} — {author}</span>
@@ -63,18 +73,23 @@ export default function BlogLayout({
       {/* CONTEÚDO DO ARTIGO */}
       <section className="max-w-3xl mx-auto px-4 py-8">
         {children}
-        <BlogNav prevHref={prevHref} prevLabel={prevLabel} nextHref={nextHref} nextLabel={nextLabel} />
+        <BlogNav
+          prevHref={withBase(prevHref)}
+          prevLabel={prevLabel}
+          nextHref={withBase(nextHref)}
+          nextLabel={nextLabel}
+        />
       </section>
 
       {/* SUGESTÕES DE LEITURA */}
-      {suggestions.length > 0 && (
+      {suggestionsWithBase.length > 0 && (
         <section className="max-w-3xl mx-auto px-4 pb-8">
           <div className="bg-kore-ciano/10 rounded-2xl p-6 shadow-xl">
             <h3 className="text-xl text-kore-destaque font-bold mb-2">Sugestões de leitura</h3>
             <ul className="list-disc pl-6">
-              {suggestions.map((s) => (
+              {suggestionsWithBase.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
+                  <Link href={s.href!} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
                 </li>
               ))}
             </ul>
