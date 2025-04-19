@@ -2,14 +2,15 @@
 import React from 'react'
 import BlogLayout from '@/components/BlogLayout'
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 const nextHref = '/blog/caso-zapier'
 const prevHref = '/blog/automacao-n8n'
 const suggestions = [
-  { href: '/blog/apis-webhooks', title: 'APIs e Webhooks: Manual Completo para Integração entre Sistemas' },
-  { href: '/blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
-  { href: '/blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
+  { href: 'blog/apis-webhooks', title: 'APIs e Webhooks: Manual Completo para Integração entre Sistemas' },
+  { href: 'blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
+  { href: 'blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
 ]
 
 export default function BlogPostPage() {
@@ -63,7 +64,7 @@ export default function BlogPostPage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
 
@@ -83,7 +84,7 @@ export default function BlogPostPage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 import { supabase } from '../../utils/supabaseClient';
+import Link from "next/link";
 
 function SuporteForm() {
   const [status, setStatus] = useState<'idle'|'sucesso'|'erro'>('idle');
@@ -172,7 +173,7 @@ export default function SuportePage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="#" className="cta-btn px-8 py-4 text-lg text-center">Abrir Chamado</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Abrir Chamado</Link>
         </div>
       </section>
     </main>

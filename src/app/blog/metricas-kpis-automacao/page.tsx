@@ -5,8 +5,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/automacao-marketing'
 const prevHref = '/blog/recursos-n8n'
 const suggestions = [
-  { href: '/blog/automacao-marketing', title: 'Guia Definitivo de Automação de Marketing' },
-  { href: '/blog/recursos-n8n', title: 'Recursos Gratuitos para Aprender n8n' },
+  { href: 'blog/automacao-marketing', title: 'Guia Definitivo de Automação de Marketing' },
+  { href: 'blog/recursos-n8n', title: 'Recursos Gratuitos para Aprender n8n' },
 ]
 
 export default function MetricasKPIsAutomacaoPage() {

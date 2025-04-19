@@ -4,8 +4,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/metricas-kpis-automacao'
 const prevHref = '/blog/apis-webhooks'
 const suggestions = [
-  { href: '/blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
-  { href: '/blog/automacao-n8n', title: 'Como a automação com n8n pode transformar seu negócio' },
+  { href: 'blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
+  { href: 'blog/automacao-n8n', title: 'Como a automação com n8n pode transformar seu negócio' },
 ]
 
 export default function RecursosN8nPage() {

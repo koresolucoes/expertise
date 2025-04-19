@@ -4,8 +4,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/lowcode-nocode'
 const prevHref = '/blog/tendencias-automacao-2025'
 const suggestions = [
-  { href: '/blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },
-  { href: '/blog/tendencias-automacao-2025', title: '13 Tendências de Automação para 2025' },
+  { href: 'blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },
+  { href: 'blog/tendencias-automacao-2025', title: '13 Tendências de Automação para 2025' },
 ]
 
 export default function IAGenerativaAutomacaoPage() {
