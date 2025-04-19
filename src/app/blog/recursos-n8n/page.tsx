@@ -12,7 +12,7 @@ export default function RecursosN8nPage() {
   return (
     <BlogLayout
       title="Recursos Gratuitos para Aprender n8n: Tutoriais, Vídeos e Cursos"
-      image="/blog-images/recursos-n8n.jpg"
+      image="/expertise/blog-images/recursos-n8n.jpg"
       date="2024-12-20"
       author="n8n Docs"
       prevHref={prevHref}

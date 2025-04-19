@@ -13,7 +13,7 @@ export default function CasoZapierPage() {
   return (
     <BlogLayout
       title="Estudo de Caso: Aumento de Produtividade com Zapier em Pequenas Empresas"
-      image="/blog-images/caso-zapier.jpg"
+      image="/expertise/blog-images/caso-zapier.jpg"
       date="2025-04-10"
       author="BenchmarkONE"
       prevHref={prevHref}

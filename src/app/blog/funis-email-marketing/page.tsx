@@ -13,7 +13,7 @@ export default function FunisEmailMarketingPage() {
   return (
     <BlogLayout
       title="Funis de E-mail Marketing Automatizado: Como Criar Fluxos de Nutrição que Convertem"
-      image="/blog-images/funis-email-marketing.jpg"
+      image="/expertise/blog-images/funis-email-marketing.jpg"
       date="2025-03-01"
       author="Email Marketing Agency"
       prevHref={prevHref}

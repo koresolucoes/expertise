@@ -67,7 +67,7 @@ export default function SobrePage() {
             <span className="text-xs text-gray-400">Automação & Integração</span>
           </div>
           <div className="bg-black bg-opacity-40 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Image src="/fabricio-avatar.jpg" alt="Fabricio Gonçalves" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
+            <Image src="/expertise/fabricio-avatar.jpg" alt="Fabricio Gonçalves" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
             <span className="font-bold text-ciano-eletrico">Fabricio Gonçalves</span>
             <span className="text-gray-300 mb-1">Instrutor & Suporte</span>
             <span className="text-xs text-gray-400">Educação & Atendimento</span>

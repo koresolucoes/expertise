@@ -13,7 +13,7 @@ export default function MetricasKPIsAutomacaoPage() {
   return (
     <BlogLayout
       title="Métricas e KPIs em Automação: Como Monitorar Resultados e Otimizar Fluxos"
-      image="/blog-images/metricas-kpis-automacao.jpg"
+      image="/expertise/blog-images/metricas-kpis-automacao.jpg"
       date="2024-12-01"
       author="explodingtopics.com"
       prevHref={prevHref}
