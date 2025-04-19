@@ -8,9 +8,9 @@ import Link from 'next/link'
 const nextHref = '/blog/caso-zapier'
 const prevHref = '/blog/automacao-n8n'
 const suggestions = [
-  { href: 'blog/apis-webhooks', title: 'APIs e Webhooks: Manual Completo para Integração entre Sistemas' },
-  { href: 'blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
-  { href: 'blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
+  { href: '/blog/apis-webhooks', title: 'APIs e Webhooks: Manual Completo para Integração entre Sistemas' },
+  { href: '/blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
+  { href: '/blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
 ]
 
 export default function BlogPostPage() {

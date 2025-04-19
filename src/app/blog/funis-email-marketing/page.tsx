@@ -5,8 +5,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/tendencias-automacao-2025'
 const prevHref = '/blog/comparativo-automacao'
 const suggestions = [
-  { href: 'blog/automacao-marketing', title: 'Guia Definitivo de Automação de Marketing' },
-  { href: 'blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
+  { href: '/blog/automacao-marketing', title: 'Guia Definitivo de Automação de Marketing' },
+  { href: '/blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
 ]
 
 export default function FunisEmailMarketingPage() {

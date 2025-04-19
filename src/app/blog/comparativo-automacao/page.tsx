@@ -6,8 +6,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/funis-email-marketing'
 const prevHref = '/blog/startup-n8n'
 const suggestions = [
-  { href: 'blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },
-  { href: 'blog/automacao-marketing', title: 'Guia Definitivo de Automação de Marketing' },
+  { href: '/blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },
+  { href: '/blog/automacao-marketing', title: 'Guia Definitivo de Automação de Marketing' },
 ]
 
 export default function ComparativoAutomacaoPage() {

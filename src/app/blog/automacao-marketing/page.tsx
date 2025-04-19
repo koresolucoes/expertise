@@ -4,8 +4,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/caso-zapier'
 const prevHref = '/blog/metricas-kpis-automacao'
 const suggestions = [
-  { href: 'blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
-  { href: 'blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
+  { href: '/blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
+  { href: '/blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
 ]
 
 export default function AutomacaoMarketingPage() {

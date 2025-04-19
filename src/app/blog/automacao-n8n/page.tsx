@@ -6,8 +6,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/apis-sem-codigo'
 const prevHref = '/blog/metricas-kpis-automacao'
 const suggestions = [
-  { href: 'blog/apis-sem-codigo', title: 'Integração de APIs sem Código' },
-  { href: 'blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
+  { href: '/blog/apis-sem-codigo', title: 'Integração de APIs sem Código' },
+  { href: '/blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
 ]
 
 export default function BlogPostPage() {

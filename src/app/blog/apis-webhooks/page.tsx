@@ -5,8 +5,8 @@ import BlogLayout from '@/components/BlogLayout'
 const nextHref = '/blog/recursos-n8n'
 const prevHref = '/blog/lowcode-nocode'
 const suggestions = [
-  { href: 'blog/recursos-n8n', title: 'Recursos Gratuitos para Aprender n8n' },
-  { href: 'blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },
+  { href: '/blog/recursos-n8n', title: 'Recursos Gratuitos para Aprender n8n' },
+  { href: '/blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },
 ]
 
 export default function APIsWebhooksPage() {

@@ -4,8 +4,8 @@ import BlogLayout from '@/components/BlogLayout';
 const nextHref = '/blog/comparativo-automacao';
 const prevHref = '/blog/caso-zapier';
 const suggestions = [
-  { href: 'blog/ia-generativa-automacao', title: 'IA Generativa em Automação de Conteúdo' },
-  { href: 'blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
+  { href: '/blog/ia-generativa-automacao', title: 'IA Generativa em Automação de Conteúdo' },
+  { href: '/blog/metricas-kpis-automacao', title: 'Métricas e KPIs em Automação' },
 ];
 
 export default function StartupN8nPage() {
