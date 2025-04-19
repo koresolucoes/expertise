@@ -13,7 +13,7 @@ export default function APIsWebhooksPage() {
   return (
     <BlogLayout
       title="APIs e Webhooks: Manual Completo para Integração entre Sistemas"
-      image="/blog-images/apis-webhooks.jpg"
+      image="/expertise/blog-images/apis-webhooks.jpg"
       date="2025-01-08"
       author="Bloomreach"
       prevHref={prevHref}

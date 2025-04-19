@@ -12,7 +12,7 @@ export default function IAGenerativaAutomacaoPage() {
   return (
     <BlogLayout
       title="IA Generativa em Automação de Conteúdo: O Futuro da Criação de Textos"
-      image="/blog-images/ia-generativa-automacao.jpg"
+      image="/expertise/blog-images/ia-generativa-automacao.jpg"
       date="2025-02-03"
       author="arXiv"
       prevHref={prevHref}
