@@ -95,7 +95,7 @@ export default function BlogLayout({
       <section className="max-w-2xl mx-auto px-4 py-12">
         <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos leitores</h2>
         <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
-          <Image src="/leitor-exemplo.jpg" alt="Leitor satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
+          <Image src="/expertise/blog-images/leitor-exemplo.jpg" alt="Leitor satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
           <blockquote className="italic text-gray-200 text-center mb-2">“Apliquei as dicas do blog Kore e consegui criar integrações sem código para meu negócio!”</blockquote>
           <span className="font-bold text-kore-destaque">Patrícia Souza</span>
           <span className="text-gray-400 text-sm">Especialista em Marketing Digital</span>
