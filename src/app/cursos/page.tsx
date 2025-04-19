@@ -90,7 +90,7 @@ export default function CursosPage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
     </main>

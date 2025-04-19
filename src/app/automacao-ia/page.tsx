@@ -1,6 +1,7 @@
 // Página de Automação com n8n e IA
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AutomacaoIaPage() {
   return (
@@ -134,7 +135,7 @@ export default function AutomacaoIaPage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Solicite uma Solução Personalizada</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
     </main>
