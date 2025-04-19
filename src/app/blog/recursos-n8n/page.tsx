@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import BlogLayout from '@/components/BlogLayout'
 
 const nextHref = '/blog/metricas-kpis-automacao'

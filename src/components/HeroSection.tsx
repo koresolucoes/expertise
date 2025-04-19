@@ -2,6 +2,7 @@
 // Seção hero com título, subtítulo, animação temática e CTA
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function HeroSection() {
   return (
@@ -22,7 +23,7 @@ export default function HeroSection() {
         </svg>
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full py-24">
-      <img src="kore-logo.png" alt="Logo Kore" width="250" height="250" />
+      <Image src="/kore-logo.png" alt="Logo Kore" width={250} height={250} />
         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-kore-ciano animate-fade-in">
           Automação Inteligente com n8n e IA
         </h1>
