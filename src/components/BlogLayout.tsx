@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import BlogNav from './BlogNav';
 import BlogComments from '@/components/BlogComments';
 
@@ -38,26 +37,13 @@ export default function BlogLayout({
   postSlug,
   children,
 }: BlogLayoutProps) {
-  const [isClient, setIsClient] = useState(false);
-
-  // Solo se ejecuta en el cliente
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // No usar useRouter hasta que esté montado en el cliente
-  const { basePath } = useRouter();
-
-  // Aplica el basePath si estamos en producción
+  // Usa o basePath do ambiente para compatibilidade com SSR/SSG
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const withBase = (url?: string) => (url ? `${basePath}${url}` : undefined);
   const suggestionsWithBase = suggestions.map(s => ({
     ...s,
     href: withBase(s.href),
   }));
-
-  if (!isClient) {
-    return null; // Evitar renderizar el contenido en el servidor
-  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black pb-0">
