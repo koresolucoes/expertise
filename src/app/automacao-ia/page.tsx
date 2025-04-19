@@ -31,7 +31,7 @@ export default function AutomacaoIaPage() {
           </div>
           <h1 className="text-4xl md:text-6xl font-black mb-4 text-kore-ciano animate-fade-in">Automação com n8n e IA</h1>
           <p className="text-xl md:text-2xl text-kore-branco mb-8 max-w-2xl animate-fade-in delay-100">Soluções inteligentes e sob medida para transformar processos em resultados reais.</p>
-          <a href="#cases" className="cta-btn px-6 py-3 text-base font-semibold rounded-full bg-kore-ciano text-black hover:bg-ciano-eletrico transition animate-fade-in delay-200">Veja Casos de Uso</a>
+          <Link href="#cases" className="cta-btn px-6 py-3 text-base font-semibold rounded-full bg-kore-ciano text-black hover:bg-ciano-eletrico transition animate-fade-in delay-200">Veja Casos de Uso</Link>
         </div>
       </section>
 
