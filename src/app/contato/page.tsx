@@ -15,24 +15,25 @@ export default function ContatoPage() {
           const nome = (form.nome as HTMLInputElement).value;
           const email = (form.email as HTMLInputElement).value;
           const telefone = (form.telefone as HTMLInputElement).value;
-          const assunto = (form.assunto as HTMLInputElement).value;
           const mensagem = (form.mensagem as HTMLTextAreaElement).value;
           setStatus('idle');
-          // Enviar todos os campos para a nova tabela 'contatos_detalhados'
-          const { error } = await supabase.from('contatos_detalhados').insert([{ nome, email, telefone, assunto, mensagem }]);
-          if (error) {
+          try {
+            const { error } = await supabase.from('contatos').insert([{ nome, email, telefone, mensagem }]);
+            if (error) {
+              setStatus('erro');
+            } else {
+              setStatus('sucesso');
+              form.reset();
+            }
+          } catch {
             setStatus('erro');
-          } else {
-            setStatus('sucesso');
-            form.reset();
           }
         }}>
-          <input required name="nome" placeholder="Nome" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
-          <input required name="email" type="email" placeholder="E-mail" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
-          <input name="telefone" placeholder="Telefone" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
-          <input required name="assunto" placeholder="Assunto" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" />
-          <textarea required name="mensagem" placeholder="Mensagem" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ciano-eletrico" rows={5} />
-          <button type="submit" className="px-6 py-3 rounded-full bg-ciano-eletrico text-azul-petroleo font-semibold shadow-lg hover:scale-105 transition-transform">Enviar</button>
+          <input required name="nome" type="text" placeholder="Nome" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-kore-ciano" />
+          <input required name="email" type="email" placeholder="E-mail" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-kore-ciano" />
+          <input name="telefone" type="text" placeholder="Telefone" className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-kore-ciano" />
+          <textarea required name="mensagem" placeholder="Mensagem" rows={4} className="p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-kore-ciano" />
+          <button type="submit" className="cta-btn mt-2 disabled:opacity-60">Enviar</button>
           {status === 'sucesso' && <span className="text-verde-lima font-semibold mt-2">Mensagem enviada com sucesso!</span>}
           {status === 'erro' && <span className="text-magenta font-semibold mt-2">Erro ao enviar. Tente novamente.</span>}
         </form>

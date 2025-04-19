@@ -5,7 +5,7 @@ import DifferentialsSection from '@/components/DifferentialsSection'
 import CoursesHighlightSection from '@/components/CoursesHighlightSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import QuickContactSection from '@/components/QuickContactSection'
-import Footer from '@/components/Footer'
+
 
 export default function Home() {
   return (
@@ -17,7 +17,6 @@ export default function Home() {
       <CoursesHighlightSection />
       <TestimonialsSection />
       <QuickContactSection />
-      <Footer />
     </main>
   )
 }

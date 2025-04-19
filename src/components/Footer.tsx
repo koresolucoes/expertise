@@ -14,9 +14,11 @@ export default function Footer() {
           <Link href="/sobre" className="hover:text-ciano-eletrico">Sobre Nós</Link>
           <Link href="/blog" className="hover:text-ciano-eletrico">Blog</Link>
           <Link href="/contato" className="hover:text-ciano-eletrico">Contato</Link>
+          <Link href="/politica-de-privacidade" className="hover:text-ciano-eletrico">Política de Privacidade</Link>
+          <Link href="/termos-de-uso" className="hover:text-ciano-eletrico">Termos de Uso</Link>
         </div>
         <div>
-          <span>© {new Date().getFullYear()} Automação Expertise. Todos os direitos reservados.</span>
+          <span>© {new Date().getFullYear()} Kore. Todos os direitos reservados.</span>
         </div>
       </div>
     </footer>
