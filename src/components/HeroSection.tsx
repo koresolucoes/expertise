@@ -1,6 +1,7 @@
 // HeroSection.tsx
 // Seção hero com título, subtítulo, animação temática e CTA
 import React from 'react'
+import Link from 'next/link'
 
 export default function HeroSection() {
   return (
@@ -29,12 +30,8 @@ export default function HeroSection() {
           Cursos, configuração, suporte e soluções sob medida
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-200">
-          <a href="/expertise/cursos" className="cta-btn">
-            Explore Nossos Cursos
-          </a>
-          <a href="/expertise/automacao-ia" className="cta-btn bg-kore-destaque text-kore-azul hover:brightness-110">
-            Saiba Mais Sobre Automação
-          </a>
+          <Link href="/expertise/cursos" className="cta-btn">Explore Nossos Cursos</Link>
+          <Link href="/expertise/automacao-ia" className="cta-btn bg-kore-destaque text-kore-azul hover:brightness-110">Saiba Mais Sobre Automação</Link>
         </div>
       </div>
     </section>

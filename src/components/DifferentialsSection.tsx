@@ -1,6 +1,7 @@
 // DifferentialsSection.tsx
 // Seção de diferenciais da empresa
 import React from 'react'
+import Link from 'next/link'
 
 const differentials = [
   {
@@ -50,9 +51,9 @@ export default function DifferentialsSection() {
       </div>
       {/* CTA sticky ao final da seção */}
       <div className="w-full flex justify-center mt-14">
-        <a href="/automacao-ia" className="cta-btn text-lg px-8 py-4 shadow-xl bg-kore-destaque text-kore-azul hover:brightness-110 sticky bottom-8 z-20">
+        <Link href="/automacao-ia" className="cta-btn text-lg px-8 py-4 shadow-xl bg-kore-destaque text-kore-azul hover:brightness-110 sticky bottom-8 z-20">
           Conheça Nossas Soluções de IA
-        </a>
+        </Link>
       </div>
     </section>
   )
