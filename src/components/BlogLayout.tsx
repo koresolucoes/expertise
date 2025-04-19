@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import BlogNav from './BlogNav';
 import BlogComments from '@/components/BlogComments';
 
@@ -51,7 +52,7 @@ export default function BlogLayout({
           </svg>
         </div>
         <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-4">
-          <a href="/blog" className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</a>
+          <Link href="/blog" className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</Link>
           <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" />
           <h1 className="text-3xl md:text-4xl font-black text-kore-ciano mb-4">{title}</h1>
           <span className="text-gray-400 text-xs mb-2 block">{date} — {author}</span>
@@ -72,7 +73,7 @@ export default function BlogLayout({
             <ul className="list-disc pl-6">
               {suggestions.map((s) => (
                 <li key={s.href}>
-                  <a href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</a>
+                  <Link href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
                 </li>
               ))}
             </ul>
@@ -103,7 +104,7 @@ export default function BlogLayout({
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
 
