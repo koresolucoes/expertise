@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -38,6 +38,14 @@ export default function BlogLayout({
   postSlug,
   children,
 }: BlogLayoutProps) {
+  const [isClient, setIsClient] = useState(false);
+
+  // Solo se ejecuta en el cliente
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // No usar useRouter hasta que esté montado en el cliente
   const { basePath } = useRouter();
 
   // Aplica el basePath si estamos en producción
@@ -46,6 +54,10 @@ export default function BlogLayout({
     ...s,
     href: withBase(s.href),
   }));
+
+  if (!isClient) {
+    return null; // Evitar renderizar el contenido en el servidor
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black pb-0">
