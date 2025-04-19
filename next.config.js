@@ -4,7 +4,7 @@ const repo = 'expertise';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: isProd ? `/${repo}` : '',
-  assetPrefix: isProd ? `/${repo}/` : '',
+  assetPrefix: isProd ? `/${repo}` : '',
   trailingSlash: true,
   output: 'export',
   images: {
