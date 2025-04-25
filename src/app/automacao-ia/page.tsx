@@ -303,7 +303,7 @@ function WorkflowSection() {
               edgeTypes={edgeTypes}
               connectionLineType={ConnectionLineType.SmoothStep}
               fitView={true}
-              fitViewOptions={{ padding: window.innerWidth < 640 ? 0.2 : 0.35 }}
+              fitViewOptions={{ padding: 0.25 }}
               style={{ minHeight: 220, width: '100vw', maxWidth: '100%' }}
             >
               <Controls />
