@@ -74,7 +74,7 @@ export default function BlogPostPage() {
         <ol className="mb-4 list-decimal pl-6 text-gray-200">
           <li>Mapeie processos manuais repetitivos na sua empresa.</li>
           <li>Instale o n8n (na nuvem, local ou Docker).</li>
-          <li>Escolha conectores (ex: HTTP Request, Google Sheets, Gmail, WhatsApp).</li>
+          <li>Escolha conectores (ex: nó &quot;HTTP Request&quot;, Google Sheets, nó &quot;Gmail&quot;, WhatsApp).</li>
           <li>Arraste os nós, conecte e configure cada etapa do fluxo.</li>
           <li>Teste o workflow, monitore resultados e ajuste conforme necessário.</li>
           <li>Documente e compartilhe o fluxo com sua equipe.</li>

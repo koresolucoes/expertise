@@ -44,7 +44,7 @@ export default function AutomacaoMarketingPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">Principais tipos de automação de marketing</h2>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
-          <li><b>E-mail marketing automatizado:</b> Sequências de boas-vindas, nutrição, promoções, follow-up.</li>
+          <li><b>E-mail marketing automatizado:</b> Sequência &quot;Boas-vindas&quot;, nutrição, promoções, follow-up.</li>
           <li><b>Automação de redes sociais:</b> Agendamento e publicação automática de posts, respostas automáticas.</li>
           <li><b>Lead scoring e qualificação automática:</b> Identifique leads prontos para vendas.</li>
           <li><b>Automação de CRM:</b> Atualização automática de contatos, tarefas e oportunidades.</li>

@@ -25,7 +25,7 @@ export default function RecursosN8nPage() {
       <section className="max-w-3xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-extrabold mb-6 text-kore-destaque">Recursos Gratuitos para Aprender n8n: Guia Completo de Tutoriais, Comunidades e Dicas</h1>
         <p className="mb-6 text-lg text-gray-200">
-          O n8n é uma das plataformas de automação mais flexíveis e poderosas do mundo open source. Aprender a usar o n8n pode transformar sua carreira, acelerar negócios e abrir portas para integrações incríveis — e o melhor: há muitos recursos gratuitos para isso!
+          O n8n é uma das plataformas de automação mais flexíveis e poderosas do mundo open source. Aprender a busca por &quot;n8n&quot; pode transformar sua carreira, acelerar negócios e abrir portas para integrações incríveis — e o melhor: há muitos recursos gratuitos para isso!
         </p>
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">O que é o n8n e por que aprender?</h2>
@@ -41,7 +41,7 @@ export default function RecursosN8nPage() {
           <li><a href="https://community.n8n.io/c/tutorials/10" className="underline text-ciano-eletrico" target="_blank">Tutoriais oficiais e da comunidade</a> — Passo a passo para integrações, automações e casos de uso.</li>
           <li><a href="https://www.udemy.com/course/n8n-automacoes/" className="underline text-ciano-eletrico" target="_blank">Curso Udemy (PT)</a> — Curso gratuito para iniciantes em português.</li>
           <li><a href="https://github.com/n8n-io/n8n" className="underline text-ciano-eletrico" target="_blank">GitHub n8n</a> — Exemplos, templates e contribuições open source.</li>
-          <li><a href="https://t.me/n8nbrasil" className="underline text-ciano-eletrico" target="_blank">Grupo Telegram n8n Brasil</a> — Comunidade ativa para networking e dúvidas rápidas.</li>
+          <li><a href="https://t.me/n8nbrasil" className="underline text-ciano-eletrico" target="_blank">Grupo Telegram &quot;n8n Brasil&quot;</a> — Comunidade ativa para networking e dúvidas rápidas.</li>
           <li><a href="https://www.linkedin.com/company/n8n-io/" className="underline text-ciano-eletrico" target="_blank">LinkedIn n8n</a> — Novidades, artigos e vagas.</li>
         </ul>
 

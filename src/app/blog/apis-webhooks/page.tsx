@@ -12,7 +12,7 @@ const suggestions = [
 export default function APIsWebhooksPage() {
   return (
     <BlogLayout
-      title="APIs e Webhooks: Manual Completo para Integração entre Sistemas"
+      title="APIs e &quot;Webhooks&quot;: Manual Completo para Integração entre Sistemas"
       image="/expertise/blog-images/apis-webhooks.jpg"
       date="2025-01-08"
       author="Bloomreach"
@@ -21,15 +21,15 @@ export default function APIsWebhooksPage() {
       suggestions={suggestions}
       postSlug="apis-webhooks"
     >
-      <h1 className="text-3xl md:text-4xl font-bold text-ciano-eletrico mb-6">APIs e Webhooks: Manual Completo para Integração entre Sistemas</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-ciano-eletrico mb-6">APIs e &quot;Webhooks&quot;: Manual Completo para Integração entre Sistemas</h1>
       <section className="max-w-3xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-extrabold mb-6 text-kore-destaque">APIs e Webhooks: Manual Completo para Integração entre Sistemas</h1>
+        <h1 className="text-3xl font-extrabold mb-6 text-kore-destaque">APIs e &quot;Webhooks&quot;: Manual Completo para Integração entre Sistemas</h1>
         <p className="text-lg mb-6 text-gray-200">
           No mundo digital, conectar sistemas é essencial para automatizar processos, ganhar produtividade e criar experiências inovadoras. APIs e webhooks são as ferramentas-chave dessa integração — e, neste manual completo, você vai entender como usá-las, mesmo sem saber programar.
         </p>
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">O que são APIs? (Explicação simples e exemplos)</h2>
-        <p className="mb-4 text-gray-200">
+        <p className="text-lg mb-6 text-gray-200">
           APIs (Application Programming Interfaces) funcionam como pontes entre sistemas. Imagine que você pede uma pizza por um app: o app conversa com o sistema da pizzaria via API, faz o pedido e recebe a confirmação. APIs permitem que softwares troquem dados de forma padronizada, seja para buscar informações, criar registros ou acionar funções em outros sistemas.
         </p>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
@@ -39,7 +39,7 @@ export default function APIsWebhooksPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">O que são webhooks? (Analogia e exemplos)</h2>
         <p className="mb-4 text-gray-200">
-          Webhooks são como notificações automáticas: quando algo acontece em um sistema (ex: novo pedido, novo lead), ele "avisa" outro sistema instantaneamente, enviando os dados do evento. Diferente das APIs (que você precisa "chamar"), o webhook é proativo e dispara sozinho.
+          Webhooks são como notificações automáticas: quando algo acontece em um sistema (ex: novo pedido, novo lead), ele &quot;avisa&quot; outro sistema instantaneamente, enviando os dados do evento. Diferente das APIs (que você precisa &quot;chamar&quot;), o webhook é proativo e dispara sozinho.
         </p>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
           <li>Exemplo: Um formulário envia dados para o CRM assim que é preenchido, via webhook.</li>

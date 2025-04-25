@@ -69,8 +69,8 @@ export default function BlogPostPage() {
         <ol className="mb-4 list-decimal pl-6 text-gray-200">
           <li>Defina o objetivo: ex. enviar um e-mail toda vez que um novo cliente é cadastrado.</li>
           <li>No n8n, crie um workflow e adicione o nó "Webhook" para receber dados do formulário.</li>
-          <li>Adicione um nó "HTTP Request" para buscar dados adicionais se necessário.</li>
-          <li>Inclua o nó "Gmail" ou "SMTP" para disparar o e-mail automaticamente.</li>
+          <li>Adicione um nó &quot;HTTP Request&quot; para buscar dados adicionais se necessário.</li>
+          <li>Inclua o nó &quot;Gmail&quot; ou &quot;SMTP&quot; para disparar o e-mail automaticamente.</li>
           <li>Teste o fluxo, monitore e ajuste conforme necessário.</li>
         </ol>
         <p className="mb-4 text-gray-200">
