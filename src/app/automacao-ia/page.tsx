@@ -226,14 +226,14 @@ function WorkflowSection() {
   const onConnect = React.useCallback((params: Connection) => setEdges((eds) => addEdge({ ...params, animated: true, label: "new" }, eds)), [setEdges]);
 
   // Seleção de node/edge
-  const [selectedNode, setSelectedNode] = React.useState<Node | null>(null);
+  
   // Passo atual do workflow (para animar stepper junto com execução)
   const [workflowStep, setWorkflowStep] = React.useState<number>(0);
 
   // Stepper dinâmico: destaca passo em execução
   const currentStep = workflowStep;
 
-  const onNodeClick = React.useCallback((e: React.MouseEvent, node: Node) => setSelectedNode(node), []);
+  
 
   return (
     <section className="py-16">
@@ -261,7 +261,7 @@ function WorkflowSection() {
               onNodesChange={onNodesChange}
               onEdgesChange={onEdgesChange}
               onConnect={onConnect}
-              onNodeClick={onNodeClick}
+              
               nodeTypes={nodeTypes}
               connectionLineType={ConnectionLineType.SmoothStep}
               fitView
