@@ -87,11 +87,6 @@ export default function StartupN8nPage() {
           <li>Monitoramento constante para evitar falhas</li>
         </ul>
       </section>
-      {/* DEPOIMENTO DE LEITOR */}
-      <section className="max-w-2xl mx-auto px-4 py-12">
-        <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos leitores</h2>
-
-      </section>
       
     </BlogLayout>
   );
