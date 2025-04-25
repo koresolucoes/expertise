@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useReactFlow } from 'reactflow';
+import { Node } from 'reactflow';
 
-export function useAutoCenter(currentStep: number, nodes: any[]) {
+export function useAutoCenter(currentStep: number, nodes: Node[]) {
   const reactFlowInstance = useReactFlow();
 
   useEffect(() => {

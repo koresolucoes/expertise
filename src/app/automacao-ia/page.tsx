@@ -2,7 +2,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import ReactFlow, {
-  useReactFlow,
   addEdge,
   Background,
   Connection,
@@ -15,7 +14,6 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './CustomNode';
-import { useAutoCenter } from './useAutoCenter';
 
 // Métricas
 const metrics = [
