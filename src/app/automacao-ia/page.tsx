@@ -12,8 +12,11 @@ import ReactFlow, {
   useEdgesState,
   useNodesState,
 } from 'reactflow';
+import dagre from 'dagre';
+import { Position } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './CustomNode';
+import AnimatedEdge from './AnimatedEdge';
 
 // Métricas
 const metrics = [
@@ -64,6 +67,11 @@ function AnimatedCounter({ value, duration = 2.5, className = "" }: { value: num
 
 // Defina nodeTypes fora do componente para evitar recriação a cada render
 const nodeTypes = { custom: CustomNode };
+const edgeTypes = { animated: AnimatedEdge };
+
+// Novo tamanho dos nodes (menor)
+const NODE_WIDTH = 180;
+const NODE_HEIGHT = 110;
 
 function WorkflowSection() {
   // Exemplo realista de automação: Chat do usuário → Agente IA → E-mail automático → Banco de Dados
@@ -79,7 +87,8 @@ function WorkflowSection() {
     {
       id: "1",
       type: "custom",
-      position: { x: 80, y: 120 },
+      // posição será definida pelo auto layout
+      position: { x: 0, y: 0 },
       data: {
         label: "RH (Início)",
         userMessage: "",
@@ -92,7 +101,7 @@ function WorkflowSection() {
     {
       id: "2",
       type: "custom",
-      position: { x: 600, y: 120 },
+      position: { x: 0, y: 0 },
       data: {
         label: "IA (Checklist)",
         iaResponse: "",
@@ -105,7 +114,7 @@ function WorkflowSection() {
     {
       id: "3",
       type: "custom",
-      position: { x: 1200, y: 120 },
+      position: { x: 0, y: 0 },
       data: {
         label: "E-mail ao Colaborador",
         emailContent: "",
@@ -118,7 +127,7 @@ function WorkflowSection() {
     {
       id: "4",
       type: "custom",
-      position: { x: 1800, y: 120 },
+      position: { x: 0, y: 0 },
       data: {
         label: "Banco de Dados (Onboarding)",
         registro: "",
@@ -131,7 +140,7 @@ function WorkflowSection() {
     {
       id: "5",
       type: "custom",
-      position: { x: 2400, y: 120 },
+      position: { x: 0, y: 0 },
       data: {
         label: "Resumo do Onboarding",
         resumo: "",
@@ -142,15 +151,49 @@ function WorkflowSection() {
     },
   ];
   const initialEdges: Edge[] = [
-    { id: "e1-2", source: "1", target: "2", type: "default" },
-    { id: "e2-3", source: "2", target: "3", type: "default" },
-    { id: "e3-4", source: "3", target: "4", type: "default" },
-    { id: "e4-5", source: "4", target: "5", type: "default" },
+    { id: "e1-2", source: "1", target: "2", type: "animated" },
+    { id: "e2-3", source: "2", target: "3", type: "animated" },
+    { id: "e3-4", source: "3", target: "4", type: "animated" },
+    { id: "e4-5", source: "4", target: "5", type: "animated" },
   ];
 
   // React Flow - estado local conforme documentação oficial
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // Função de auto layout com dagre
+  function getLayoutedElements(nodes: Node[], edges: Edge[], direction = 'LR') { // 'LR' = Left-to-Right (horizontal)
+
+    const dagreGraph = new dagre.graphlib.Graph();
+    dagreGraph.setDefaultEdgeLabel(() => ({}));
+    const isHorizontal = direction === 'LR';
+    dagreGraph.setGraph({ rankdir: direction, nodesep: 120, ranksep: 120 });
+    nodes.forEach((node) => {
+      dagreGraph.setNode(node.id, { width: NODE_WIDTH, height: NODE_HEIGHT });
+    });
+    edges.forEach((edge) => {
+      dagreGraph.setEdge(edge.source, edge.target);
+    });
+    dagre.layout(dagreGraph);
+    return nodes.map((node) => {
+      const nodeWithPosition = dagreGraph.node(node.id);
+      return {
+        ...node,
+        position: {
+          x: nodeWithPosition.x - NODE_WIDTH / 2,
+          y: nodeWithPosition.y - NODE_HEIGHT / 2,
+        },
+        targetPosition: isHorizontal ? Position.Left : Position.Top,
+        sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
+      };
+    });
+  }
+
+  const [nodes, setNodes, onNodesChange] = useNodesState(getLayoutedElements(initialNodes, initialEdges));
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Auto layout sempre que nodes ou edges mudarem
+  useEffect(() => {
+    setNodes((nds) => getLayoutedElements(nds, edges));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [edges.length]);
 
   // Função assíncrona para atualizar dados, simular delays e passar valores entre nodes
   // Handler automático: executa toda a cadeia após o clique inicial
@@ -237,7 +280,7 @@ function WorkflowSection() {
           Como funciona na prática?
         </h2>
         {/* Stepper simples */}
-        <div className="flex justify-center gap-2 mb-4 overflow-x-auto whitespace-nowrap sm:flex-wrap sm:overflow-visible">
+        <div className="flex justify-center gap-2 mb-4 flex-wrap overflow-x-auto whitespace-nowrap w-full">
           {steps.map((s, i) => (
             <div
               key={s}
@@ -248,21 +291,21 @@ function WorkflowSection() {
             </div>
           ))}
         </div>
-        <div className="bg-white/10 rounded-2xl p-6 shadow-lg">
-          <div className="mb-6">
+        <div className="bg-white/10 rounded-2xl p-2 shadow-lg w-full max-w-full overflow-x-auto scrollbar-thin scrollbar-thumb-kore-ciano/40">
+          <div className="mb-6 w-full">
             <ReactFlow
               nodes={nodes}
               edges={edges}
               onNodesChange={onNodesChange}
               onEdgesChange={onEdgesChange}
               onConnect={onConnect}
-              
               nodeTypes={nodeTypes}
+              edgeTypes={edgeTypes}
               connectionLineType={ConnectionLineType.SmoothStep}
-              fitView={false}
-              style={{ minHeight: 340 }}
+              fitView={true}
+              fitViewOptions={{ padding: window.innerWidth < 640 ? 0.2 : 0.35 }}
+              style={{ minHeight: 220, width: '100vw', maxWidth: '100%' }}
             >
-              
               <Controls />
               <Background gap={16} size={1} />
             </ReactFlow>

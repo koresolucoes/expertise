@@ -1,7 +1,9 @@
 import { Handle, NodeProps, Position } from 'reactflow';
 import { motion } from 'framer-motion';
-
 import { useState } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+
+const COLORS = ['#00cfd1', '#0a1a2f', '#1a2e3a', '#facc15'];
 
 export default function CustomNode({ id, data, selected }: NodeProps) {
   const [loading, setLoading] = useState(false);
@@ -17,6 +19,12 @@ export default function CustomNode({ id, data, selected }: NodeProps) {
         ))}
       </div>
     ) : null;
+
+  // Exemplo de gráfico: progresso do onboarding
+  const progressData = [
+    { name: 'Concluído', value: data.status === 'done' ? 100 : data.status === 'active' ? 60 : 20 },
+    { name: 'Restante', value: data.status === 'done' ? 0 : data.status === 'active' ? 40 : 80 },
+  ];
 
   let content = null;
 
@@ -98,22 +106,53 @@ export default function CustomNode({ id, data, selected }: NodeProps) {
     content = null;
   }
 
+  // Responsividade: ajusta tamanho do node conforme tela
+  const nodeSizeClass = data.label === 'Resumo do Onboarding'
+    ? 'w-64 h-64 sm:w-96 sm:h-80'
+    : 'w-56 h-56 sm:w-72 sm:h-72';
+
   return (
     <motion.div
       layout
       initial={{ scale: 0.95, opacity: 0.7 }}
       animate={{ scale: selected ? 1.07 : 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className={`relative group ${data.label === 'Resumo do Onboarding' ? 'w-64 h-64 sm:w-96 sm:h-80' : 'w-56 h-56 sm:w-72 sm:h-72'} flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#101e2e] via-[#00cfd1]/40 to-[#1a2e3a] border-2 ${selected ? 'border-kore-ciano shadow-lg' : 'border-[#00cfd1]/40'} rounded-2xl shadow-md overflow-visible transition-all duration-300`}
+      className={`relative group ${nodeSizeClass} flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#101e2e] via-[#00cfd1]/40 to-[#1a2e3a] border-2 ${selected ? 'border-kore-ciano shadow-lg' : 'border-[#00cfd1]/40'} rounded-2xl shadow-md overflow-visible transition-all duration-300`}
     >
       {/* Círculo decorativo IA/Tech */}
       <span className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-gradient-to-tr from-[#00cfd1]/70 via-[#0a1a2f]/80 to-[#00cfd1]/40 border-2 border-white/20 flex items-center justify-center text-2xl text-kore-ciano shadow-md">
         {data.label.includes('IA') ? '🤖' : data.label.includes('E-mail') ? '📧' : data.label.includes('Banco') ? '💾' : '👤'}
       </span>
-      <div className="flex flex-col items-center gap-2 w-full px-2">
+      {/* Gráfico de progresso animado */}
+      <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 z-10">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={progressData}
+              cx="50%"
+              cy="50%"
+              innerRadius={18}
+              outerRadius={30}
+              startAngle={90}
+              endAngle={-270}
+              dataKey="value"
+              isAnimationActive={true}
+            >
+              {progressData.map((entry, idx) => (
+                <Cell key={`cell-${idx}`} fill={COLORS[idx % COLORS.length]} />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+        <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-kore-ciano">
+          {progressData[0].value}%
+        </span>
+      </div>
+      <div className="flex flex-col items-center gap-2 w-full px-2 mt-4">
         {content}
       </div>
       {content && <div className="mt-2 text-xs font-semibold text-kore-ciano drop-shadow-sm uppercase tracking-wide">{data.label}</div>}
+      {/* Status animado */}
       {data.status === 'done' && <div className="text-green-400 text-xs font-bold mt-1 animate-pulse">Concluído</div>}
       {renderLog(data.log)}
       {/* Glow ao redor do nó ativo */}
