@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactFlow, {
   addEdge,
   Background,
@@ -231,7 +231,6 @@ function WorkflowSection() {
   }, [selectedNode, nodes]);
 
   const onNodeClick = React.useCallback((e: React.MouseEvent, node: Node) => setSelectedNode(node), []);
-  const onEdgeClick = React.useCallback((e: React.MouseEvent, edge: Edge) => setSelectedNode(edge), []);
 
   return (
     <section className="py-16">

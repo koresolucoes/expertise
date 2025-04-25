@@ -7,7 +7,7 @@ export interface NodeData {
   status?: 'idle' | 'active' | 'done' | 'error';
 }
 
-export interface EdgeData {}
+export type EdgeData = unknown;
 
 interface WorkflowState {
   nodes: Node<NodeData>[];
