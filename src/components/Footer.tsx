@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-black bg-opacity-90 py-8 text-gray-400 text-sm mt-8">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer className="bg-black bg-opacity-95 backdrop-blur w-full left-0 right-0 bottom-0 py-6 px-2 text-gray-400 text-sm mt-8 fixed md:static z-30">
+      <div className="w-full flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4 px-2 md:px-4">
         <div className="flex gap-6 mb-2 md:mb-0">
           <Link href="/" className="hover:text-ciano-eletrico">Início</Link>
           <Link href="/servicos" className="hover:text-ciano-eletrico">Serviços</Link>
