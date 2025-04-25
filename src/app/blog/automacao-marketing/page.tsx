@@ -97,7 +97,7 @@ export default function AutomacaoMarketingPage() {
         <ul className="mb-4 list-disc pl-6 text-gray-200">
           <li>Enviar mensagens genéricas para todos.</li>
           <li>Automatizar sem mapear a jornada do cliente.</li>
-          <li>Não monitorar métricas e deixar fluxos "no piloto automático".</li>
+          <li>Não monitorar métricas e deixar fluxos &quot;no piloto automático&quot;.</li>
           <li>Ignorar integração com vendas e suporte.</li>
         </ul>
 

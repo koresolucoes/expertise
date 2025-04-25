@@ -32,7 +32,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">O que é o n8n? Por que ele se destaca?</h2>
         <p className="mb-4 text-gray-200">
-          O n8n (pronuncia-se "n-eight-n") é uma plataforma open source de automação e integração de sistemas. Diferente de outras ferramentas, ele oferece liberdade total para criar fluxos personalizados, hospedar onde quiser e adaptar integrações para qualquer necessidade — sem depender de planos pagos para crescer.
+          O n8n (pronuncia-se &quot;n-eight-n&quot;) é uma plataforma open source de automação e integração de sistemas. Diferente de outras ferramentas, ele oferece liberdade total para criar fluxos personalizados, hospedar onde quiser e adaptar integrações para qualquer necessidade — sem depender de planos pagos para crescer.
         </p>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
           <li>Open source: código aberto, comunidade ativa e evolução constante.</li>

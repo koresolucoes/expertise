@@ -35,7 +35,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">O que são APIs? Uma explicação simples</h2>
         <p className="mb-4 text-gray-200">
-          Imagine que as APIs são garçons em um restaurante: você faz o pedido (requisição), o garçom leva para a cozinha (servidor), e traz o prato pronto (resposta). APIs permitem que diferentes sistemas "conversem" e troquem informações de forma padronizada. Exemplos: enviar um e-mail automático, buscar dados de uma planilha, cadastrar leads em um CRM, etc.
+          Imagine que as APIs são garçons em um restaurante: você faz o pedido (requisição), o garçom leva para a cozinha (servidor), e traz o prato pronto (resposta). APIs permitem que diferentes sistemas &quot;conversem&quot; e troquem informações de forma padronizada. Exemplos: enviar um e-mail automático, buscar dados de uma planilha, cadastrar leads em um CRM, etc.
         </p>
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">Por que integrar APIs sem código?</h2>
@@ -68,7 +68,7 @@ export default function BlogPostPage() {
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">Exemplo prático: Automatizando do zero</h2>
         <ol className="mb-4 list-decimal pl-6 text-gray-200">
           <li>Defina o objetivo: ex. enviar um e-mail toda vez que um novo cliente é cadastrado.</li>
-          <li>No n8n, crie um workflow e adicione o nó "Webhook" para receber dados do formulário.</li>
+          <li>No n8n, crie um workflow e adicione o nó &quot;Webhook&quot; para receber dados do formulário.</li>
           <li>Adicione um nó &quot;HTTP Request&quot; para buscar dados adicionais se necessário.</li>
           <li>Inclua o nó &quot;Gmail&quot; ou &quot;SMTP&quot; para disparar o e-mail automaticamente.</li>
           <li>Teste o fluxo, monitore e ajuste conforme necessário.</li>

@@ -69,7 +69,7 @@ export default function RecursosN8nPage() {
 
         <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">Erros comuns ao aprender n8n</h2>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
-          <li>Pular a documentação e tentar só "no feeling"</li>
+          <li>Pular a documentação e tentar só &quot;no feeling&quot;</li>
           <li>Ignorar boas práticas de segurança em automações</li>
           <li>Não pedir feedback ou compartilhar dúvidas</li>
         </ul>
