@@ -1,28 +1,19 @@
 "use client";
-import React, { useState, useCallback, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion, AnimatePresence, useMotionValue, animate } from "framer-motion";
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactFlow, {
-  Background,
-  Controls,
-  MiniMap,
   addEdge,
-  applyNodeChanges,
-  applyEdgeChanges,
+  Background,
   Connection,
   ConnectionLineType,
-  Node,
+  Controls,
   Edge,
-  NodeChange,
-  EdgeChange,
-  useNodesState,
+  MiniMap,
+  Node,
   useEdgesState,
-} from "reactflow";
-import "reactflow/dist/style.css";
-import CustomNode from "./CustomNode";
-import { useWorkflowStore, NodeData, EdgeData } from "./workflowStore";
-import { FaBolt, FaChartLine, FaExpandArrowsAlt, FaLock, FaLightbulb } from "react-icons/fa";
+  useNodesState,
+} from 'reactflow';
+import 'reactflow/dist/style.css';
+import CustomNode from './CustomNode';
 
 // Métricas
 const metrics = [
@@ -54,13 +45,15 @@ const faq = [
 ];
 
 // Contador animado
+import { animate } from 'framer-motion';
+
 function AnimatedCounter({ value, duration = 2.5, className = "" }: { value: number; duration?: number; className?: string }) {
   const [display, setDisplay] = useState(0);
   useEffect(() => {
     const controls = animate(0, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],
-      onUpdate: (latest) => setDisplay(Math.round(latest)),
+      onUpdate: (latest: number) => setDisplay(Math.round(latest)),
     });
     return () => controls.stop();
   }, [value, duration]);
@@ -76,8 +69,7 @@ const nodeTypes = { custom: CustomNode };
 function WorkflowSection() {
 
 
-  // FAQ state (mantido)
-  const [openFaq, setOpenFaq] = React.useState<number | null>(null);
+
 
   // Exemplo realista de automação: Chat do usuário → Agente IA → E-mail automático → Banco de Dados
   const steps = [
@@ -167,38 +159,38 @@ function WorkflowSection() {
 
   // Função assíncrona para atualizar dados, simular delays e passar valores entre nodes
   // Handler automático: executa toda a cadeia após o clique inicial
-  const onNodeDataChange = useCallback(async (id: string, changes: any) => {
+  const onNodeDataChange = useCallback(async (id: string, changes: Record<string, unknown>) => {
     console.log('[DEBUG] Handler chamado', id, changes);
     // Passo 1: RH (Início)
-    setNodes(nds => nds.map((node, idx) =>
+    setNodes(nds => nds.map((node) =>
       node.id === '1'
         ? { ...node, data: { ...node.data, status: 'done', value: 'Iniciando onboarding do novo colaborador: João Silva.', log: ['RH: Iniciando onboarding do novo colaborador: João Silva.'], onChange: onNodeDataChange } }
         : node
     ));
     await new Promise(res => setTimeout(res, 900));
     // Passo 2: IA (Checklist)
-    setNodes(nds => nds.map((node, idx) =>
+    setNodes(nds => nds.map((node) =>
       node.id === '2'
         ? { ...node, data: { ...node.data, status: 'done', value: 'Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe', log: ['IA: Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe'], onChange: onNodeDataChange } }
         : node
     ));
     await new Promise(res => setTimeout(res, 900));
     // Passo 3: E-mail ao Colaborador
-    setNodes(nds => nds.map((node, idx) =>
+    setNodes(nds => nds.map((node) =>
       node.id === '3'
         ? { ...node, data: { ...node.data, status: 'done', value: 'Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe', log: ['E-mail: Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe'], onChange: onNodeDataChange } }
         : node
     ));
     await new Promise(res => setTimeout(res, 900));
     // Passo 4: Banco de Dados (Onboarding)
-    setNodes(nds => nds.map((node, idx) =>
+    setNodes(nds => nds.map((node) =>
       node.id === '4'
         ? { ...node, data: { ...node.data, status: 'done', value: 'Onboarding do colaborador João Silva registrado no banco de dados.', log: ['Registro: Onboarding do colaborador João Silva registrado no banco de dados.'], onChange: onNodeDataChange } }
         : node
     ));
     await new Promise(res => setTimeout(res, 700));
     // Passo 5: Log Geral
-    setNodes(nds => nds.map((node, idx) =>
+    setNodes(nds => nds.map((node) =>
       node.id === '5'
         ? { ...node, data: { ...node.data, status: 'done', value: [
             'RH: Iniciando onboarding do novo colaborador: João Silva.',
@@ -302,15 +294,14 @@ export default function AutomacaoIaPage() {
 
       {/* MÉTRICAS ANIMADAS */}
       <section className="py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {metrics.map((m, idx) => (
-          <motion.div
+        {metrics.map((m) => (
+          <div
             key={m.label}
             className="bg-kore-ciano/90 text-black rounded-2xl p-8 flex flex-col items-center"
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: idx * 0.2 }}
           >
             <AnimatedCounter value={m.value} duration={2.5} className="text-4xl md:text-5xl font-black mb-2" />
             <span className="text-lg font-bold">{m.label}</span>
-          </motion.div>
+          </div>
         ))}
 
 
@@ -325,12 +316,9 @@ export default function AutomacaoIaPage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 px-2 md:px-0">
           {benefits.map((b, i) => (
-            <motion.div
+            <div
               key={b.title}
               className="relative bg-gradient-to-br from-[#0a1a2f] to-[#00cfd1]/80 text-white rounded-2xl p-7 shadow-xl cursor-pointer flex flex-col items-center group transition-all duration-300 border border-transparent hover:border-kore-ciano"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 200, damping: 24 }}
               style={{ boxShadow: '0 2px 16px 0 #00cfd120' }}
               onClick={() => setOpenBenefit(i)}
             >
@@ -345,37 +333,35 @@ export default function AutomacaoIaPage() {
               {i === 2 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: Sua operação cresce sem aumentar equipe.</div>}
               {i === 3 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: Fluxos auditáveis e conformidade total.</div>}
               {i === 4 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: IA, chatbots e integrações de última geração.</div>}
-            </motion.div>
+            </div>
           ))}
         </div>
-        <AnimatePresence>
-          {openBenefit !== null && (
-            <motion.div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpenBenefit(null)}>
-              <motion.div className="bg-white text-black rounded-2xl p-8 max-w-lg w-full relative" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} transition={{ duration: 0.3 }} onClick={e => e.stopPropagation()}>
-                <button className="absolute top-4 right-4 text-2xl" onClick={() => setOpenBenefit(null)} aria-label="Fechar">×</button>
-                <div className="flex flex-col items-center">
-                  <span className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-kore-ciano to-kore-azul shadow-lg mb-3">{benefits[openBenefit].icon}</span>
-                  <h3 className="text-2xl font-bold mt-2 text-kore-destaque">{benefits[openBenefit].title}</h3>
-                  <p className="text-gray-800 mt-4 text-center text-base">{benefits[openBenefit].details}</p>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {openBenefit !== null && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setOpenBenefit(null)}>
+            <div className="bg-white text-black rounded-2xl p-8 max-w-lg w-full relative" style={{ transform: 'scale(1)', opacity: 1 }} onClick={e => e.stopPropagation()}>
+              <button className="absolute top-4 right-4 text-2xl" onClick={() => setOpenBenefit(null)} aria-label="Fechar">×</button>
+              <div className="flex flex-col items-center">
+                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-kore-ciano to-kore-azul shadow-lg mb-3">{benefits[openBenefit].icon}</span>
+                <h3 className="text-2xl font-bold mt-2 text-kore-destaque">{benefits[openBenefit].title}</h3>
+                <p className="text-gray-800 mt-4 text-center text-base">{benefits[openBenefit].details}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* DEPOIMENTOS CAROUSEL */}
       <section className="py-12">
         <h2 className="text-2xl font-bold text-kore-ciano text-center mb-6">O que dizem nossos clientes</h2>
         <div className="relative max-w-xl mx-auto">
-          <motion.div className="bg-kore-cinza/90 rounded-2xl p-6 shadow-lg text-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <Image src={testimonials[testimonialIdx].img} alt={testimonials[testimonialIdx].name} width={64} height={64} className="rounded-full mx-auto mb-4" />
+          <div className="bg-kore-cinza/90 rounded-2xl p-6 shadow-lg text-center">
+            <img src={testimonials[testimonialIdx].img} alt={testimonials[testimonialIdx].name} width={64} height={64} className="rounded-full mx-auto mb-4" />
             <blockquote className="italic text-gray-200 mb-2">“{testimonials[testimonialIdx].quote}”</blockquote>
             <div className="font-bold text-kore-destaque">{testimonials[testimonialIdx].name}</div>
             <div className="text-sm text-gray-400 mb-2">{testimonials[testimonialIdx].role}</div>
             <button onClick={prevTestimonial} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-kore-ciano p-2 rounded-full">←</button>
             <button onClick={nextTestimonial} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-kore-ciano p-2 rounded-full">→</button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -384,23 +370,19 @@ export default function AutomacaoIaPage() {
         <h2 className="text-2xl font-bold text-kore-destaque text-center mb-6">Perguntas Frequentes</h2>
         <div className="space-y-4">
           {faq.map((f, idx) => (
-            <motion.div key={f.q} className="rounded-xl shadow-lg p-4 cursor-pointer" initial={false}
-              animate={{ backgroundColor: openFaq === idx ? '#00cfd1' : '#1f2937', color: openFaq === idx ? '#0a1a2f' : '#fff' }}
+            <div key={f.q} className={`rounded-xl shadow-lg p-4 cursor-pointer transition-all duration-300 ${openFaq === idx ? 'bg-kore-ciano text-kore-azul' : 'bg-gray-900 text-white'}`}
               onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-              transition={{ duration: 0.3 }}
             >
               <div className="flex justify-between items-center">
                 <span className="font-bold">{f.q}</span>
                 <span>{openFaq === idx ? '-' : '+'}</span>
               </div>
-              <AnimatePresence>
-                {openFaq === idx && (
-                  <motion.div className="mt-2 overflow-hidden text-sm" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}>
-                    {f.a}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {openFaq === idx && (
+                <div className="mt-2 overflow-hidden text-sm">
+                  {f.a}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </section>
@@ -414,7 +396,7 @@ export default function AutomacaoIaPage() {
             <a href="mailto:koresoluciones@outlook.com" className="underline">koresoluciones@outlook.com</a>
             <a href="tel:+5531991282843" className="underline">+55 31 99128-2843</a>
           </div>
-          <Link href="/contato" className="inline-block bg-kore-azul text-white px-6 py-3 rounded-full font-semibold hover:bg-kore-destaque transition">Entrar em Contato</Link>
+          <a href="/contato" className="inline-block bg-kore-azul text-white px-6 py-3 rounded-full font-semibold hover:bg-kore-destaque transition">Entrar em Contato</a>
         </div>
       </section>
     </main>
