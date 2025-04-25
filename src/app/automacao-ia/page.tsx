@@ -8,7 +8,6 @@ import ReactFlow, {
   ConnectionLineType,
   Controls,
   Edge,
-  MiniMap,
   Node,
   useEdgesState,
   useNodesState,
@@ -139,11 +138,11 @@ function WorkflowSection() {
       type: "custom",
       position: { x: 1160, y: 120 },
       data: {
-        label: "Log Geral",
+        label: "Resumo do Onboarding",
+        resumo: "",
         value: "",
         status: "disabled",
-        log: [],
-        placeholder: "Histórico do onboarding..."
+        placeholder: "Resumo final do onboarding..."
       },
     },
   ];
@@ -168,6 +167,7 @@ function WorkflowSection() {
         ? { ...node, data: { ...node.data, status: 'done', value: 'Iniciando onboarding do novo colaborador: João Silva.', log: ['RH: Iniciando onboarding do novo colaborador: João Silva.'], onChange: onNodeDataChange } }
         : node
     ));
+    setWorkflowStep(0);
     await new Promise(res => setTimeout(res, 900));
     // Passo 2: IA (Checklist)
     setNodes(nds => nds.map((node) =>
@@ -175,6 +175,7 @@ function WorkflowSection() {
         ? { ...node, data: { ...node.data, status: 'done', value: 'Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe', log: ['IA: Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe'], onChange: onNodeDataChange } }
         : node
     ));
+    setWorkflowStep(1);
     await new Promise(res => setTimeout(res, 900));
     // Passo 3: E-mail ao Colaborador
     setNodes(nds => nds.map((node) =>
@@ -182,6 +183,7 @@ function WorkflowSection() {
         ? { ...node, data: { ...node.data, status: 'done', value: 'Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe', log: ['E-mail: Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe'], onChange: onNodeDataChange } }
         : node
     ));
+    setWorkflowStep(2);
     await new Promise(res => setTimeout(res, 900));
     // Passo 4: Banco de Dados (Onboarding)
     setNodes(nds => nds.map((node) =>
@@ -189,6 +191,7 @@ function WorkflowSection() {
         ? { ...node, data: { ...node.data, status: 'done', value: 'Onboarding do colaborador João Silva registrado no banco de dados.', log: ['Registro: Onboarding do colaborador João Silva registrado no banco de dados.'], onChange: onNodeDataChange } }
         : node
     ));
+    setWorkflowStep(3);
     await new Promise(res => setTimeout(res, 700));
     // Passo 5: Log Geral
     setNodes(nds => nds.map((node) =>
@@ -224,12 +227,11 @@ function WorkflowSection() {
 
   // Seleção de node/edge
   const [selectedNode, setSelectedNode] = React.useState<Node | null>(null);
-  // Stepper dinâmico: destaca node selecionado
-  const currentStep = React.useMemo(() => {
-    if (!selectedNode) return null;
-    const idx = nodes.findIndex((n: Node) => n.id === selectedNode.id);
-    return idx >= 0 ? idx : null;
-  }, [selectedNode, nodes]);
+  // Passo atual do workflow (para animar stepper junto com execução)
+  const [workflowStep, setWorkflowStep] = React.useState<number>(0);
+
+  // Stepper dinâmico: destaca passo em execução
+  const currentStep = workflowStep;
 
   const onNodeClick = React.useCallback((e: React.MouseEvent, node: Node) => setSelectedNode(node), []);
 
@@ -240,13 +242,11 @@ function WorkflowSection() {
           Como funciona na prática?
         </h2>
         {/* Stepper simples */}
-        <div className="flex justify-center gap-2 mb-4">
+        <div className="flex justify-center gap-2 mb-4 overflow-x-auto whitespace-nowrap sm:flex-wrap sm:overflow-visible">
           {steps.map((s, i) => (
             <div
               key={s}
-              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
-                i === currentStep ? "bg-kore-ciano text-black" : "bg-gray-800 text-gray-200"
-              }`}
+              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-gray-800 text-gray-200 transition-all duration-300 ${currentStep === i ? 'bg-kore-ciano text-black scale-105 shadow-lg' : ''}`}
             >
               {s}
               {i < steps.length - 1 && <span className="mx-1">→</span>}
@@ -267,7 +267,7 @@ function WorkflowSection() {
               fitView
               style={{ minHeight: 340 }}
             >
-              <MiniMap />
+              
               <Controls />
               <Background gap={16} size={1} />
             </ReactFlow>
