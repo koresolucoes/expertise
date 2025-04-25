@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import ReactFlow, {
+  useReactFlow,
   addEdge,
   Background,
   Connection,
@@ -14,6 +15,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './CustomNode';
+import { useAutoCenter } from './useAutoCenter';
 
 // Métricas
 const metrics = [
@@ -62,15 +64,10 @@ function AnimatedCounter({ value, duration = 2.5, className = "" }: { value: num
   );
 }
 
-
 // Defina nodeTypes fora do componente para evitar recriação a cada render
 const nodeTypes = { custom: CustomNode };
 
 function WorkflowSection() {
-
-
-
-
   // Exemplo realista de automação: Chat do usuário → Agente IA → E-mail automático → Banco de Dados
   const steps = [
     "RH (Início)",
@@ -79,7 +76,7 @@ function WorkflowSection() {
     "Banco de Dados (Onboarding)"
   ];
 
-  // Nodes do fluxo
+  // Definição dos nodes e edges iniciais
   const initialNodes: Node[] = [
     {
       id: "1",
@@ -97,7 +94,7 @@ function WorkflowSection() {
     {
       id: "2",
       type: "custom",
-      position: { x: 350, y: 120 },
+      position: { x: 600, y: 120 },
       data: {
         label: "IA (Checklist)",
         iaResponse: "",
@@ -110,7 +107,7 @@ function WorkflowSection() {
     {
       id: "3",
       type: "custom",
-      position: { x: 620, y: 120 },
+      position: { x: 1200, y: 120 },
       data: {
         label: "E-mail ao Colaborador",
         emailContent: "",
@@ -123,7 +120,7 @@ function WorkflowSection() {
     {
       id: "4",
       type: "custom",
-      position: { x: 890, y: 120 },
+      position: { x: 1800, y: 120 },
       data: {
         label: "Banco de Dados (Onboarding)",
         registro: "",
@@ -136,7 +133,7 @@ function WorkflowSection() {
     {
       id: "5",
       type: "custom",
-      position: { x: 1160, y: 120 },
+      position: { x: 2400, y: 120 },
       data: {
         label: "Resumo do Onboarding",
         resumo: "",
@@ -264,7 +261,7 @@ function WorkflowSection() {
               
               nodeTypes={nodeTypes}
               connectionLineType={ConnectionLineType.SmoothStep}
-              fitView
+              fitView={false}
               style={{ minHeight: 340 }}
             >
               
