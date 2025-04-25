@@ -36,7 +36,7 @@ export default function MainNav() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex flex-col items-center justify-start pt-24 md:hidden animate-fade-in">
+        <div className="fixed inset-0 z-40 bg-[#101e2e] bg-opacity-100 shadow-xl border-t border-ciano-eletrico flex flex-col items-center justify-start pt-24 md:hidden animate-fade-in">
           <button
             className="absolute top-6 right-6 text-ciano-eletrico text-3xl focus:outline-none"
             aria-label="Fechar menu"
