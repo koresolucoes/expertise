@@ -1,5 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import ReactFlow, {
   addEdge,
   Background,
@@ -222,7 +223,7 @@ function WorkflowSection() {
   const onConnect = React.useCallback((params: Connection) => setEdges((eds) => addEdge({ ...params, animated: true, label: "new" }, eds)), [setEdges]);
 
   // Seleção de node/edge
-  const [selectedNode, setSelectedNode] = React.useState<any>(null);
+  const [selectedNode, setSelectedNode] = React.useState<Node | null>(null);
   // Stepper dinâmico: destaca node selecionado
   const currentStep = React.useMemo(() => {
     if (!selectedNode) return null;
@@ -354,7 +355,7 @@ export default function AutomacaoIaPage() {
         <h2 className="text-2xl font-bold text-kore-ciano text-center mb-6">O que dizem nossos clientes</h2>
         <div className="relative max-w-xl mx-auto">
           <div className="bg-kore-cinza/90 rounded-2xl p-6 shadow-lg text-center">
-            <img src={testimonials[testimonialIdx].img} alt={testimonials[testimonialIdx].name} width={64} height={64} className="rounded-full mx-auto mb-4" />
+            <Image src={testimonials[testimonialIdx].img} alt={testimonials[testimonialIdx].name} width={64} height={64} className="rounded-full mx-auto mb-4" />
             <blockquote className="italic text-gray-200 mb-2">“{testimonials[testimonialIdx].quote}”</blockquote>
             <div className="font-bold text-kore-destaque">{testimonials[testimonialIdx].name}</div>
             <div className="text-sm text-gray-400 mb-2">{testimonials[testimonialIdx].role}</div>
