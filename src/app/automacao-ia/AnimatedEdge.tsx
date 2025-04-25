@@ -1,7 +1,7 @@
 import { getBezierPath, EdgeProps } from 'reactflow';
 import { motion } from 'framer-motion';
 
-export default function AnimatedEdge({ id, sourceX, sourceY, targetX, targetY, style = {}, markerEnd }: EdgeProps) {
+export default function AnimatedEdge({ sourceX, sourceY, targetX, targetY, style = {}, markerEnd }: EdgeProps) {
   const [edgePath] = getBezierPath({ sourceX, sourceY, targetX, targetY });
 
   return (
