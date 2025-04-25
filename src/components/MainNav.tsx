@@ -19,6 +19,7 @@ export default function MainNav() {
           <li><Link href="/blog" className="mainnav-btn">Blog</Link></li>
           <li><Link href="/servicos" className="mainnav-btn">Serviços</Link></li>
           <li><Link href="/cursos" className="mainnav-btn">Cursos</Link></li>
+          <li><Link href="/automacao-ia" className="mainnav-btn">Automação IA</Link></li>
           <li><Link href="/sobre" className="mainnav-btn">Sobre</Link></li>
           <li><Link href="/contato" className="mainnav-btn">Contato</Link></li>
         </ul>
@@ -44,14 +45,14 @@ export default function MainNav() {
             &times;
           </button>
           <ul className="flex flex-col gap-6 w-full items-center">
-            {['blog', 'servicos', 'cursos', 'sobre', 'contato'].map((item) => (
+            {['blog', 'servicos', 'cursos', 'automacao-ia', 'sobre', 'contato'].map((item) => (
               <li key={item} className="w-full flex justify-center">
                 <Link
                   href={`/${item}`}
                   onClick={() => setOpen(false)}
                   className="mainnav-btn w-4/5 text-center"
                 >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                  {item === 'automacao-ia' ? 'Automação IA' : item.charAt(0).toUpperCase() + item.slice(1)}
                 </Link>
               </li>
             ))}
