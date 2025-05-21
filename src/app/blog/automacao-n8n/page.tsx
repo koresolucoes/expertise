@@ -14,7 +14,7 @@ export default function BlogPostPage() {
   return (
     <BlogLayout
       title="Transformação Digital com n8n: Caso de Sucesso em Startup Brasileira"
-      image="/expertise/blog-images/automacao-n8n.jpg"
+      image="/blog-images/automacao-n8n.jpg"
       date="2025-03-28"
       author="Medium"
       prevHref={prevHref}

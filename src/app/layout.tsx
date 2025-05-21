@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: 'Especialistas em automação de processos. Consultoria, implementação, cursos e suporte para empresas.',
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://seudominio.com',
+    url: 'https://koresolucoes.com.br',
     siteName: 'Kore',
   },
   robots: 'index, follow',

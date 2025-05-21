@@ -12,7 +12,7 @@ export default function AutomacaoMarketingPage() {
   return (
     <BlogLayout
       title="Guia Definitivo de Automação de Marketing: Estratégias, Ferramentas e Implementação"
-      image="/expertise/blog-images/automacao-marketing.jpg"
+      image="/blog-images/automacao-marketing.jpg"
       date="2025-04-17"
       author="Bloomreach"
       prevHref={prevHref}

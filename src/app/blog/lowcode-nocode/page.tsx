@@ -13,7 +13,7 @@ export default function LowCodeNoCodePage() {
   return (
     <BlogLayout
       title="Top 10 Ferramentas Low‑Code/No‑Code para Automação de Processos"
-      image="/expertise/blog-images/lowcode-nocode.jpg"
+      image="/blog-images/lowcode-nocode.jpg"
       date="2025-01-22"
       author="factbites.com"
       prevHref={prevHref}

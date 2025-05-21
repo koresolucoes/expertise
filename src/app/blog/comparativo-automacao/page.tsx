@@ -14,7 +14,7 @@ export default function ComparativoAutomacaoPage() {
   return (
     <BlogLayout
       title="Comparativo das Principais Plataformas de Automação: Zapier, Make, n8n e Power Automate"
-      image="/expertise/blog-images/comparativo-automacao.jpg"
+      image="/blog-images/comparativo-automacao.jpg"
       date="2025-03-15"
       author="BenchmarkONE, n8n Docs"
       prevHref={prevHref}

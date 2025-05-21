@@ -23,7 +23,7 @@ export default function HeroSection() {
         </svg>
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full py-24">
-      <Image src="/expertise/kore-logo.png" alt="Logo Kore" width={250} height={250} unoptimized />
+      <Image src="/kore-logo.png" alt="Logo Kore" width={250} height={250} unoptimized />
         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-kore-ciano animate-fade-in">
           Automação Inteligente com n8n e IA
         </h1>

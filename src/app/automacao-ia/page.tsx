@@ -36,8 +36,8 @@ const benefits = [
 
 // Depoimentos
 const testimonials = [
-  { name: "Patrícia Lima", role: "Head de Operações, Empresa X", img: "/expertise/blog-images/cliente-exemplo.jpg", quote: "A automação da Kore revolucionou nosso atendimento e reduziu custos drasticamente." },
-  { name: "Carlos Souza", role: "CTO, Startup Y", img: "/expertise/blog-images/cliente-exemplo.jpg", quote: "A integração de IA e automação nos permitiu escalar operações sem perder qualidade." },
+  { name: "Patrícia Lima", role: "Head de Operações, Empresa X", img: "/blog-images/cliente-exemplo.jpg", quote: "A automação da Kore revolucionou nosso atendimento e reduziu custos drasticamente." },
+  { name: "Carlos Souza", role: "CTO, Startup Y", img: "/blog-images/cliente-exemplo.jpg", quote: "A integração de IA e automação nos permitiu escalar operações sem perder qualidade." },
 ];
 
 // FAQ
