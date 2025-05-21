@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,6 +37,10 @@ export default function BlogLayout({
   postSlug,
   children,
 }: BlogLayoutProps) {
+  // Não concatene manualmente basePath! O Next.js já faz isso automaticamente.
+  // Use os hrefs e srcs relativos à raiz do app.
+  const suggestionsWithBase = suggestions;
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black pb-0">
       {/* HERO ARTIGO */}
@@ -53,7 +58,7 @@ export default function BlogLayout({
         </div>
         <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-4">
           <Link href="/blog" className="inline-block mb-4 text-ciano-eletrico underline hover:text-kore-destaque transition">← Voltar para o Blog</Link>
-          <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" />
+          <Image src={image} alt={title} width={720} height={400} className="rounded-2xl mb-6 w-full object-cover max-h-72 shadow-lg" unoptimized />
           <h1 className="text-3xl md:text-4xl font-black text-kore-ciano mb-4">{title}</h1>
           <span className="text-gray-400 text-xs mb-2 block">{date} — {author}</span>
         </div>
@@ -62,16 +67,21 @@ export default function BlogLayout({
       {/* CONTEÚDO DO ARTIGO */}
       <section className="max-w-3xl mx-auto px-4 py-8">
         {children}
-        <BlogNav prevHref={prevHref} prevLabel={prevLabel} nextHref={nextHref} nextLabel={nextLabel} />
+        <BlogNav
+          prevHref={prevHref}
+          prevLabel={prevLabel}
+          nextHref={nextHref}
+          nextLabel={nextLabel}
+        />
       </section>
 
       {/* SUGESTÕES DE LEITURA */}
-      {suggestions.length > 0 && (
+      {suggestionsWithBase.length > 0 && (
         <section className="max-w-3xl mx-auto px-4 pb-8">
           <div className="bg-kore-ciano/10 rounded-2xl p-6 shadow-xl">
             <h3 className="text-xl text-kore-destaque font-bold mb-2">Sugestões de leitura</h3>
             <ul className="list-disc pl-6">
-              {suggestions.map((s) => (
+              {suggestionsWithBase.map((s) => (
                 <li key={s.href}>
                   <Link href={s.href} className="underline text-ciano-eletrico hover:text-kore-destaque transition">{s.title}</Link>
                 </li>
@@ -85,7 +95,7 @@ export default function BlogLayout({
       <section className="max-w-2xl mx-auto px-4 py-12">
         <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos leitores</h2>
         <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
-          <Image src="/leitor-exemplo.jpg" alt="Leitor satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
+          <Image src="/blog-images/leitor-exemplo.jpg" alt="Leitor satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
           <blockquote className="italic text-gray-200 text-center mb-2">“Apliquei as dicas do blog Kore e consegui criar integrações sem código para meu negócio!”</blockquote>
           <span className="font-bold text-kore-destaque">Patrícia Souza</span>
           <span className="text-gray-400 text-sm">Especialista em Marketing Digital</span>

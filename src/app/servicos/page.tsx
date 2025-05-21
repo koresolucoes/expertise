@@ -85,7 +85,7 @@ export default function ServicosPage() {
         <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos clientes</h2>
         <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/cliente-exemplo.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
+          <img src="/blog-images/cliente-exemplo3.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
           <blockquote className="italic text-gray-200 text-center mb-2">“A Kore revolucionou nossos processos com automações sob medida e suporte incrível!”</blockquote>
           <span className="font-bold text-kore-destaque">Ana Paula Ribeiro</span>
           <span className="text-gray-400 text-sm">Gerente de TI</span>
@@ -104,7 +104,7 @@ export default function ServicosPage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
     </div>

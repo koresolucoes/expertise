@@ -24,7 +24,37 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
 }
+
+html {
+  background: #0a1a2f;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#__next, main {
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-bottom: 90px !important; /* espaço para o footer fixo */
+  }
+  footer {
+    padding-left: 4vw;
+    padding-right: 4vw;
+    font-size: 0.95rem;
+  }
+}
+
 
 html {
   background: #0a1a2f;

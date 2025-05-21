@@ -1,140 +1,440 @@
-// Página de Automação com n8n e IA
-import React from "react";
-import Image from "next/image";
+"use client";
+import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
+import ReactFlow, {
+  addEdge,
+  Background,
+  Connection,
+  ConnectionLineType,
+  Controls,
+  Edge,
+  Node,
+  useEdgesState,
+  useNodesState,
+} from 'reactflow';
+import dagre from 'dagre';
+import { Position } from 'reactflow';
+import 'reactflow/dist/style.css';
+import CustomNode from './CustomNode';
+import AnimatedEdge from './AnimatedEdge';
 
-export default function AutomacaoIaPage() {
+// Métricas
+const metrics = [
+  { label: "Automações criadas", value: 500 },
+  { label: "Integrações disponíveis", value: 100 },
+  { label: "Horas economizadas", value: 12000 },
+];
+
+// Benefícios
+const benefits = [
+  { title: "Agilidade", desc: "Automatize processos e reduza o tempo de execução.", icon: <span className="text-4xl text-yellow-400">⚡</span>, details: "Ao automatizar, sua empresa reduz drasticamente o tempo de execução de tarefas, acelerando entregas e respostas." },
+  { title: "Eficiência", desc: "Elimine tarefas repetitivas e minimize erros.", icon: <span className="text-4xl text-blue-500">📈</span>, details: "Reduz erros humanos e retrabalho, garantindo qualidade e padronização." },
+  { title: "Escalabilidade", desc: "Cresça sem aumentar custos operacionais.", icon: <span className="text-4xl text-green-500">⤢</span>, details: "Atenda mais clientes sem precisar multiplicar a equipe ou os custos." },
+  { title: "Segurança", desc: "Padronize fluxos e garanta conformidade.", icon: <span className="text-4xl text-purple-500">🔒</span>, details: "Regras claras e rastreáveis garantem maior segurança de dados." },
+  { title: "Inovação", desc: "Implemente IA e novas tecnologias facilmente.", icon: <span className="text-4xl text-orange-400">💡</span>, details: "A automação abre portas para a adoção de IA, chatbots e integrações modernas." }
+];
+
+// Depoimentos
+const testimonials = [
+  { name: "Patrícia Lima", role: "Head de Operações, Empresa X", img: "/blog-images/cliente-exemplo.jpg", quote: "A automação da Kore revolucionou nosso atendimento e reduziu custos drasticamente." },
+  { name: "Carlos Souza", role: "CTO, Startup Y", img: "/blog-images/cliente-exemplo.jpg", quote: "A integração de IA e automação nos permitiu escalar operações sem perder qualidade." },
+];
+
+// FAQ
+const faq = [
+  { q: "O que posso automatizar?", a: "Processos de atendimento, vendas, marketing, integrações entre sistemas, notificações e muito mais." },
+  { q: "Preciso saber programar?", a: "Não! Montamos fluxos visuais e intuitivos, sem código para o usuário final." },
+  { q: "Posso integrar com meu ERP/CRM?", a: "Sim, conectamos com centenas de sistemas via API, webhook ou integração nativa." },
+];
+
+// Contador animado
+import { animate } from 'framer-motion';
+
+function AnimatedCounter({ value, duration = 2.5, className = "" }: { value: number; duration?: number; className?: string }) {
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    const controls = animate(0, value, {
+      duration,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (latest: number) => setDisplay(Math.round(latest)),
+    });
+    return () => controls.stop();
+  }, [value, duration]);
   return (
-    <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black pb-0">
-      {/* HERO */}
-      <section className="relative flex flex-col items-center justify-center text-center min-h-[45vh] py-16 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 z-0 pointer-events-none select-none animate-fade-in">
-          <svg width="100%" height="100%" viewBox="0 0 1440 500" fill="none" className="w-full h-full">
-            <defs>
-              <radialGradient id="g1" cx="50%" cy="50%" r="80%" fx="50%" fy="50%" gradientTransform="rotate(25)">
-                <stop offset="0%" stopColor="#00cfd1" stopOpacity="0.15" />
-                <stop offset="100%" stopColor="#0a1a2f" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <ellipse cx="720" cy="250" rx="680" ry="220" fill="url(#g1)" />
-            <circle cx="320" cy="120" r="40" fill="#a8ff04" opacity="0.06">
-              <animate attributeName="r" values="40;60;40" dur="7s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="1100" cy="380" r="32" fill="#00fff7" opacity="0.08">
-              <animate attributeName="r" values="32;55;32" dur="8s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
-        </div>
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="mb-6 animate-fade-in">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="8" width="48" height="48" rx="16" fill="#00cfd1"/><circle cx="32" cy="32" r="16" fill="#0a1a2f"/><path d="M32 18v8m0 12v8m-14-14h8m12 0h8" stroke="#a8ff04" strokeWidth="2.5" strokeLinecap="round"/></svg>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-black mb-4 text-kore-ciano animate-fade-in">Automação com n8n e IA</h1>
-          <p className="text-xl md:text-2xl text-kore-branco mb-8 max-w-2xl animate-fade-in delay-100">Soluções inteligentes e sob medida para transformar processos em resultados reais.</p>
-          <a href="#cases" className="cta-btn px-6 py-3 text-base font-semibold rounded-full bg-kore-ciano text-black hover:bg-ciano-eletrico transition animate-fade-in delay-200">Veja Casos de Uso</a>
-        </div>
-      </section>
+    <span className={className}>{display.toLocaleString()}</span>
+  );
+}
 
-      {/* CARDS DE CASOS DE USO */}
-      <section id="cases" className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-kore-destaque mb-10 text-center">Casos de Uso Reais</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: <span className="text-4xl">💬</span>,
-              title: 'Atendimento Omnichannel',
-              desc: 'Integração de WhatsApp, e-mail e CRM com IA para triagem automática e respostas inteligentes.',
-              result: 'Redução de 70% no tempo de resposta.'
-            },
-            {
-              icon: <span className="text-4xl">📄</span>,
-              title: 'Extração de Dados',
-              desc: 'Pipeline n8n+IA para extrair dados de PDFs, estruturar e enviar para dashboards.',
-              result: 'Eliminação de tarefas manuais e relatórios em tempo real.'
-            },
-            {
-              icon: <span className="text-4xl">📢</span>,
-              title: 'Monitoramento de Redes',
-              desc: 'Análise de sentimento em redes sociais e alertas automáticos para equipe via Slack.',
-              result: 'Resposta proativa e reputação digital protegida.'
-            }
-          ].map((c, i) => (
-            <div key={i} className="bg-kore-cinza/90 rounded-2xl p-8 shadow-xl flex flex-col items-center hover:scale-[1.04] hover:shadow-2xl hover:bg-kore-ciano/10 transition-all duration-200 border border-transparent hover:border-kore-ciano">
-              <div className="mb-4">{c.icon}</div>
-              <h3 className="text-xl font-bold text-kore-ciano mb-2 text-center">{c.title}</h3>
-              <p className="text-gray-200 text-center text-base mb-4 min-h-[56px]">{c.desc}</p>
-              <span className="text-kore-destaque font-semibold text-sm mt-auto">{c.result}</span>
+// Defina nodeTypes fora do componente para evitar recriação a cada render
+const nodeTypes = { custom: CustomNode };
+const edgeTypes = { animated: AnimatedEdge };
+
+// Novo tamanho dos nodes (menor)
+const NODE_WIDTH = 180;
+const NODE_HEIGHT = 110;
+
+function WorkflowSection() {
+  // Exemplo realista de automação: Chat do usuário → Agente IA → E-mail automático → Banco de Dados
+  const steps = [
+    "RH (Início)",
+    "IA (Checklist)",
+    "E-mail ao Colaborador",
+    "Banco de Dados (Onboarding)"
+  ];
+
+  // Definição dos nodes e edges iniciais
+  const initialNodes: Node[] = [
+    {
+      id: "1",
+      type: "custom",
+      // posição será definida pelo auto layout
+      position: { x: 0, y: 0 },
+      data: {
+        label: "RH (Início)",
+        userMessage: "",
+        value: "",
+        status: "active",
+        log: [],
+        placeholder: "Mensagem do RH..."
+      },
+    },
+    {
+      id: "2",
+      type: "custom",
+      position: { x: 0, y: 0 },
+      data: {
+        label: "IA (Checklist)",
+        iaResponse: "",
+        value: "",
+        status: "disabled",
+        log: [],
+        placeholder: "Checklist gerado pela IA..."
+      },
+    },
+    {
+      id: "3",
+      type: "custom",
+      position: { x: 0, y: 0 },
+      data: {
+        label: "E-mail ao Colaborador",
+        emailContent: "",
+        value: "",
+        status: "disabled",
+        log: [],
+        placeholder: "Conteúdo do e-mail..."
+      },
+    },
+    {
+      id: "4",
+      type: "custom",
+      position: { x: 0, y: 0 },
+      data: {
+        label: "Banco de Dados (Onboarding)",
+        registro: "",
+        value: "",
+        status: "disabled",
+        log: [],
+        placeholder: "Log/registro..."
+      },
+    },
+    {
+      id: "5",
+      type: "custom",
+      position: { x: 0, y: 0 },
+      data: {
+        label: "Resumo do Onboarding",
+        resumo: "",
+        value: "",
+        status: "disabled",
+        placeholder: "Resumo final do onboarding..."
+      },
+    },
+  ];
+  const initialEdges: Edge[] = [
+    { id: "e1-2", source: "1", target: "2", type: "animated" },
+    { id: "e2-3", source: "2", target: "3", type: "animated" },
+    { id: "e3-4", source: "3", target: "4", type: "animated" },
+    { id: "e4-5", source: "4", target: "5", type: "animated" },
+  ];
+
+  // React Flow - estado local conforme documentação oficial
+  // Função de auto layout com dagre
+  function getLayoutedElements(nodes: Node[], edges: Edge[], direction = 'LR') { // 'LR' = Left-to-Right (horizontal)
+
+    const dagreGraph = new dagre.graphlib.Graph();
+    dagreGraph.setDefaultEdgeLabel(() => ({}));
+    const isHorizontal = direction === 'LR';
+    dagreGraph.setGraph({ rankdir: direction, nodesep: 120, ranksep: 120 });
+    nodes.forEach((node) => {
+      dagreGraph.setNode(node.id, { width: NODE_WIDTH, height: NODE_HEIGHT });
+    });
+    edges.forEach((edge) => {
+      dagreGraph.setEdge(edge.source, edge.target);
+    });
+    dagre.layout(dagreGraph);
+    return nodes.map((node) => {
+      const nodeWithPosition = dagreGraph.node(node.id);
+      return {
+        ...node,
+        position: {
+          x: nodeWithPosition.x - NODE_WIDTH / 2,
+          y: nodeWithPosition.y - NODE_HEIGHT / 2,
+        },
+        targetPosition: isHorizontal ? Position.Left : Position.Top,
+        sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
+      };
+    });
+  }
+
+  const [nodes, setNodes, onNodesChange] = useNodesState(getLayoutedElements(initialNodes, initialEdges));
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Auto layout sempre que nodes ou edges mudarem
+  useEffect(() => {
+    setNodes((nds) => getLayoutedElements(nds, edges));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [edges.length]);
+
+  // Função assíncrona para atualizar dados, simular delays e passar valores entre nodes
+  // Handler automático: executa toda a cadeia após o clique inicial
+  const onNodeDataChange = useCallback(async (id: string, changes: Record<string, unknown>) => {
+    console.log('[DEBUG] Handler chamado', id, changes);
+    // Passo 1: RH (Início)
+    setNodes(nds => nds.map((node) =>
+      node.id === '1'
+        ? { ...node, data: { ...node.data, status: 'done', value: 'Iniciando onboarding do novo colaborador: João Silva.', log: ['RH: Iniciando onboarding do novo colaborador: João Silva.'], onChange: onNodeDataChange } }
+        : node
+    ));
+    setWorkflowStep(0);
+    await new Promise(res => setTimeout(res, 900));
+    // Passo 2: IA (Checklist)
+    setNodes(nds => nds.map((node) =>
+      node.id === '2'
+        ? { ...node, data: { ...node.data, status: 'done', value: 'Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe', log: ['IA: Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe'], onChange: onNodeDataChange } }
+        : node
+    ));
+    setWorkflowStep(1);
+    await new Promise(res => setTimeout(res, 900));
+    // Passo 3: E-mail ao Colaborador
+    setNodes(nds => nds.map((node) =>
+      node.id === '3'
+        ? { ...node, data: { ...node.data, status: 'done', value: 'Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe', log: ['E-mail: Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe'], onChange: onNodeDataChange } }
+        : node
+    ));
+    setWorkflowStep(2);
+    await new Promise(res => setTimeout(res, 900));
+    // Passo 4: Banco de Dados (Onboarding)
+    setNodes(nds => nds.map((node) =>
+      node.id === '4'
+        ? { ...node, data: { ...node.data, status: 'done', value: 'Onboarding do colaborador João Silva registrado no banco de dados.', log: ['Registro: Onboarding do colaborador João Silva registrado no banco de dados.'], onChange: onNodeDataChange } }
+        : node
+    ));
+    setWorkflowStep(3);
+    await new Promise(res => setTimeout(res, 700));
+    // Passo 5: Log Geral
+    setNodes(nds => nds.map((node) =>
+      node.id === '5'
+        ? { ...node, data: { ...node.data, status: 'done', value: [
+            'RH: Iniciando onboarding do novo colaborador: João Silva.',
+            'IA: Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe',
+            'E-mail: Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe',
+            'Registro: Onboarding do colaborador João Silva registrado no banco de dados.'
+          ].join('\n'), log: [
+            'RH: Iniciando onboarding do novo colaborador: João Silva.',
+            'IA: Checklist de integração: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe',
+            'E-mail: Olá João, seja bem-vindo! Segue seu checklist de onboarding: - Criar e-mail corporativo - Liberar acesso ao sistema - Agendar apresentação com a equipe',
+            'Registro: Onboarding do colaborador João Silva registrado no banco de dados.'
+          ], onChange: onNodeDataChange } }
+        : node
+    ));
+  }, [setNodes]);
+
+  // Após o primeiro render e sempre que o handler mudar, injete o handler nos nodes
+  useEffect(() => {
+    setNodes(nds =>
+      nds.map(node => (
+        node.data.onChange
+          ? node
+          : { ...node, data: { ...node.data, onChange: onNodeDataChange } }
+      ))
+    );
+  }, [onNodeDataChange, setNodes]);
+
+  // Handler oficial para conexão
+  const onConnect = React.useCallback((params: Connection) => setEdges((eds) => addEdge({ ...params, animated: true, label: "new" }, eds)), [setEdges]);
+
+  // Seleção de node/edge
+  
+  // Passo atual do workflow (para animar stepper junto com execução)
+  const [workflowStep, setWorkflowStep] = React.useState<number>(0);
+
+  // Stepper dinâmico: destaca passo em execução
+  const currentStep = workflowStep;
+
+  
+
+  return (
+    <section className="py-16">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-kore-destaque mb-6 text-center">
+          Como funciona na prática?
+        </h2>
+        {/* Stepper simples */}
+        <div className="flex justify-center gap-2 mb-4 flex-wrap overflow-x-auto whitespace-nowrap w-full">
+          {steps.map((s, i) => (
+            <div
+              key={s}
+              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-gray-800 text-gray-200 transition-all duration-300 ${currentStep === i ? 'bg-kore-ciano text-black scale-105 shadow-lg' : ''}`}
+            >
+              {s}
+              {i < steps.length - 1 && <span className="mx-1">→</span>}
             </div>
           ))}
         </div>
+        <div className="bg-white/10 rounded-2xl p-2 shadow-lg w-full max-w-full overflow-x-auto scrollbar-thin scrollbar-thumb-kore-ciano/40">
+          <div className="mb-6 w-full">
+            <ReactFlow
+              nodes={nodes}
+              edges={edges}
+              onNodesChange={onNodesChange}
+              onEdgesChange={onEdgesChange}
+              onConnect={onConnect}
+              nodeTypes={nodeTypes}
+              edgeTypes={edgeTypes}
+              connectionLineType={ConnectionLineType.SmoothStep}
+              fitView={true}
+              fitViewOptions={{ padding: 0.25 }}
+              style={{ minHeight: 220, width: '100vw', maxWidth: '100%' }}
+            >
+              <Controls />
+              <Background gap={16} size={1} />
+            </ReactFlow>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function AutomacaoIaPage() {
+  const [openFaq, setOpenFaq] = React.useState<number | null>(null);
+  const [openBenefit, setOpenBenefit] = React.useState<number | null>(null);
+  const [testimonialIdx, setTestimonialIdx] = useState<number>(0);
+
+  const nextTestimonial = () => setTestimonialIdx((idx) => (idx + 1) % testimonials.length);
+  const prevTestimonial = () => setTestimonialIdx((idx) => (idx - 1 + testimonials.length) % testimonials.length);
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-kore-azul via-kore-cinza to-black text-white">
+      <>
+        <WorkflowSection />
+      </>
+
+      {/* MÉTRICAS ANIMADAS */}
+      <section className="py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {metrics.map((m) => (
+          <div
+            key={m.label}
+            className="bg-kore-ciano/90 text-black rounded-2xl p-8 flex flex-col items-center"
+          >
+            <AnimatedCounter value={m.value} duration={2.5} className="text-4xl md:text-5xl font-black mb-2" />
+            <span className="text-lg font-bold">{m.label}</span>
+          </div>
+        ))}
+
+
       </section>
 
-      {/* LINHA DO TEMPO DE AUTOMAÇÃO */}
-      <section className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold text-kore-ciano mb-8 text-center">Como funciona nossa automação?</h2>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-          {[
-            {icon: '🔎', label: 'Diagnóstico'},
-            {icon: '🔗', label: 'Integração'},
-            {icon: '⚙️', label: 'Automação'},
-            {icon: '📊', label: 'Monitoramento'},
-            {icon: '🏆', label: 'Resultados'}
-          ].map((step, idx, arr) => (
-            <div key={step.label} className="flex flex-col items-center">
-              <div className="text-3xl mb-2">{step.icon}</div>
-              <span className="font-bold text-kore-ciano text-sm mb-1">{step.label}</span>
-              {idx < arr.length - 1 && (
-                <span className="hidden md:block text-3xl text-kore-ciano">→</span>
+      {/* BENEFÍCIOS INTERATIVOS */}
+      <section className="py-16 relative" style={{ background: 'linear-gradient(120deg, #0a1a2f 60%, #0e223a 100%)' }}>
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-kore-destaque mb-4">Por que automatizar com a Kore?</h2>
+          <h3 className="text-lg md:text-xl font-medium text-white mb-2">Automação inteligente, escalável e segura para transformar seu negócio</h3>
+          <p className="text-gray-200 md:text-lg">A Kore combina expertise em automação, IA e integração para entregar soluções sob medida, seguras e com alto impacto na produtividade. Descubra como nossos diferenciais podem acelerar resultados e liberar o potencial da sua equipe.</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 px-2 md:px-0">
+          {benefits.map((b, i) => (
+            <div
+              key={b.title}
+              className="relative bg-gradient-to-br from-[#0a1a2f] to-[#00cfd1]/80 text-white rounded-2xl p-7 shadow-xl cursor-pointer flex flex-col items-center group transition-all duration-300 border border-transparent hover:border-kore-ciano"
+              style={{ boxShadow: '0 2px 16px 0 #00cfd120' }}
+              onClick={() => setOpenBenefit(i)}
+            >
+              <span className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-kore-ciano to-kore-azul shadow-lg mb-3 group-hover:shadow-kore-destaque transition-all duration-300">
+                {b.icon}
+              </span>
+              <h3 className="font-bold text-lg md:text-xl text-kore-destaque mb-1 group-hover:text-kore-azul transition-all">{b.title}</h3>
+              <div className="text-gray-100 text-sm md:text-base mb-2 text-center">{b.desc}</div>
+              {/* Micro-destaques ou exemplos práticos */}
+              {i === 0 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: Processos que levavam horas agora são instantâneos.</div>}
+              {i === 1 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: Redução de 80% em tarefas manuais repetitivas.</div>}
+              {i === 2 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: Sua operação cresce sem aumentar equipe.</div>}
+              {i === 3 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: Fluxos auditáveis e conformidade total.</div>}
+              {i === 4 && <div className="text-xs text-kore-ciano font-semibold mt-1">Ex: IA, chatbots e integrações de última geração.</div>}
+            </div>
+          ))}
+        </div>
+        {openBenefit !== null && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setOpenBenefit(null)}>
+            <div className="bg-white text-black rounded-2xl p-8 max-w-lg w-full relative" style={{ transform: 'scale(1)', opacity: 1 }} onClick={e => e.stopPropagation()}>
+              <button className="absolute top-4 right-4 text-2xl" onClick={() => setOpenBenefit(null)} aria-label="Fechar">×</button>
+              <div className="flex flex-col items-center">
+                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-kore-ciano to-kore-azul shadow-lg mb-3">{benefits[openBenefit].icon}</span>
+                <h3 className="text-2xl font-bold mt-2 text-kore-destaque">{benefits[openBenefit].title}</h3>
+                <p className="text-gray-800 mt-4 text-center text-base">{benefits[openBenefit].details}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* DEPOIMENTOS CAROUSEL */}
+      <section className="py-12">
+        <h2 className="text-2xl font-bold text-kore-ciano text-center mb-6">O que dizem nossos clientes</h2>
+        <div className="relative max-w-xl mx-auto">
+          <div className="bg-kore-cinza/90 rounded-2xl p-6 shadow-lg text-center">
+            <Image src={testimonials[testimonialIdx].img} alt={testimonials[testimonialIdx].name} width={64} height={64} className="rounded-full mx-auto mb-4" />
+            <blockquote className="italic text-gray-200 mb-2">“{testimonials[testimonialIdx].quote}”</blockquote>
+            <div className="font-bold text-kore-destaque">{testimonials[testimonialIdx].name}</div>
+            <div className="text-sm text-gray-400 mb-2">{testimonials[testimonialIdx].role}</div>
+            <button onClick={prevTestimonial} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-kore-ciano p-2 rounded-full">←</button>
+            <button onClick={nextTestimonial} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-kore-ciano p-2 rounded-full">→</button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ INTERATIVO */}
+      <section className="py-12 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold text-kore-destaque text-center mb-6">Perguntas Frequentes</h2>
+        <div className="space-y-4">
+          {faq.map((f, idx) => (
+            <div key={f.q} className={`rounded-xl shadow-lg p-4 cursor-pointer transition-all duration-300 ${openFaq === idx ? 'bg-kore-ciano text-kore-azul' : 'bg-gray-900 text-white'}`}
+              onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+            >
+              <div className="flex justify-between items-center">
+                <span className="font-bold">{f.q}</span>
+                <span>{openFaq === idx ? '-' : '+'}</span>
+              </div>
+              {openFaq === idx && (
+                <div className="mt-2 overflow-hidden text-sm">
+                  {f.a}
+                </div>
               )}
             </div>
           ))}
         </div>
       </section>
 
-      {/* BENEFÍCIOS ANIMADOS */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold text-kore-destaque mb-8 text-center">Por que automatizar com a Kore?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          {[
-            {icon: '⚡', label: 'Agilidade'},
-            {icon: '🤖', label: 'Inteligência'},
-            {icon: '🔒', label: 'Segurança'},
-            {icon: '📈', label: 'Escalabilidade'},
-            {icon: '💸', label: 'Redução de Custos'}
-          ].map((b) => (
-            <div key={b.label} className="bg-kore-ciano/10 rounded-lg p-6 text-center hover:scale-105 transition-transform duration-200">
-              <span className="block text-3xl mb-2 animate-pulse-slow">{b.icon}</span>
-              <span className="font-bold text-kore-ciano">{b.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* DEPOIMENTO DE CLIENTE */}
-      <section className="max-w-2xl mx-auto px-4 py-12">
-        <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos clientes</h2>
-        <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
-          
-<Image src="/cliente-exemplo.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
-          <blockquote className="italic text-gray-200 text-center mb-2">&ldquo;A automação da Kore revolucionou nosso atendimento e reduziu custos drasticamente. Recomendo para qualquer empresa que quer crescer com tecnologia!&rdquo;</blockquote>
-          <span className="font-bold text-kore-destaque">Patrícia Lima</span>
-          <span className="text-gray-400 text-sm">Head de Operações, Empresa X</span>
-        </div>
-      </section>
-
-      {/* CONTATO FIXO / CTA FINAL */}
-      <section className="cta-footer w-full flex justify-center py-3 bg-gradient-to-t from-black via-kore-cinza to-transparent fixed bottom-0 left-0 z-30 transition-transform duration-500 ease-in-out group hover:translate-y-0 translate-y-[90%]">
-
-        <div className="bg-kore-ciano/90 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 shadow-xl max-w-2xl w-full group-hover:opacity-100 opacity-90 transition-opacity duration-500">
-          <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold text-kore-azul mb-2">Pronto para automatizar?</h3>
-            <p className="text-kore-azul mb-2">Fale com um especialista e descubra como a Kore pode transformar seu negócio.</p>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center justify-center md:justify-start">
-              <a href="mailto:koresoluciones@outlook.com" className="underline hover:text-kore-destaque">koresoluciones@outlook.com</a>
-              <span className="hidden md:inline">|</span>
-              <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
-            </div>
+      {/* CTA FINAL */}
+      <section className="py-8 bg-gradient-to-t from-black via-kore-cinza to-transparent text-center">
+        <div className="bg-kore-ciano/90 inline-block rounded-2xl p-8 shadow-lg">
+          <h3 className="text-2xl font-bold mb-2">Pronto para automatizar?</h3>
+          <p className="mb-4">Fale com um especialista e descubra como a Kore pode transformar seu negócio.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+            <a href="mailto:koresoluciones@outlook.com" className="underline">koresoluciones@outlook.com</a>
+            <a href="tel:+5531991282843" className="underline">+55 31 99128-2843</a>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Solicite uma Solução Personalizada</a>
+          <a href="/contato" className="inline-block bg-kore-azul text-white px-6 py-3 rounded-full font-semibold hover:bg-kore-destaque transition">Entrar em Contato</a>
         </div>
       </section>
     </main>

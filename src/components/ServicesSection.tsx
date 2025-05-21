@@ -62,9 +62,9 @@ export default function ServicesSection() {
       </div>
       {/* CTA sticky ao final da seção */}
       <div className="w-full flex justify-center mt-14">
-        <a href="/configuracao" className="cta-btn text-lg px-8 py-4 shadow-xl bg-kore-destaque text-kore-azul hover:brightness-110 sticky bottom-8 z-20">
+        <Link href="/configuracao" className="cta-btn text-lg px-8 py-4 shadow-xl bg-kore-destaque text-kore-azul hover:brightness-110 sticky bottom-8 z-20">
           Solicite um Orçamento de Configuração
-        </a>
+        </Link>
       </div>
     </section>
   )

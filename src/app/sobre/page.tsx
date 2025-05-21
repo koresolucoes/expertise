@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SobrePage() {
   return (
@@ -60,19 +61,19 @@ export default function SobrePage() {
         <h2 className="text-2xl font-bold text-kore-destaque mb-8 text-center">Equipe</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-black bg-opacity-40 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Image src="/luciano-avatar.jpg" alt="Luciano Gutierrez" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
+            <Image src="/blog-images/luciano-avatar.jpg" alt="Luciano Gutierrez" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
             <span className="font-bold text-ciano-eletrico">Luciano Gutierrez</span>
             <span className="text-gray-300 mb-1">Especialista em n8n</span>
             <span className="text-xs text-gray-400">Automação & Integração</span>
           </div>
           <div className="bg-black bg-opacity-40 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Image src="/fabricio-avatar.jpg" alt="Fabricio Gonçalves" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
+            <Image src="/blog-images/fabricio-avatar.jpg" alt="Fabricio Gonçalves" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
             <span className="font-bold text-ciano-eletrico">Fabricio Gonçalves</span>
             <span className="text-gray-300 mb-1">Instrutor & Suporte</span>
             <span className="text-xs text-gray-400">Educação & Atendimento</span>
           </div>
           <div className="bg-black bg-opacity-40 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
-            <Image src="/beatriz-avatar.jpg" alt="Beatriz Covelo" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
+            <Image src="/blog-images/beatriz-avatar.jpg" alt="Beatriz Covelo" width={80} height={80} className="w-20 h-20 rounded-full mb-3 border-2 border-kore-ciano shadow" />
             <span className="font-bold text-ciano-eletrico">Beatriz Covelo</span>
             <span className="text-gray-300 mb-1">Líder de Marketing e Vendas</span>
             <span className="text-xs text-gray-400">Estratégia & Relacionamento</span>
@@ -84,7 +85,7 @@ export default function SobrePage() {
       <section className="max-w-2xl mx-auto px-4 py-12">
         <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem sobre a Kore</h2>
         <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
-          <Image src="/cliente-exemplo.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
+          <Image src="/blog-images/cliente-exemplo4.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
           <blockquote className="italic text-gray-200 text-center mb-2">“A Kore superou nossas expectativas, entregando automação e suporte de altíssimo nível!”</blockquote>
           <span className="font-bold text-kore-destaque">Mariana Reis</span>
           <span className="text-gray-400 text-sm">Gestora de Projetos, Empresa Z</span>
@@ -103,7 +104,7 @@ export default function SobrePage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Entrar em Contato</Link>
         </div>
       </section>
     </main>

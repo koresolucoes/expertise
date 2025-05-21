@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 import { supabase } from '../../utils/supabaseClient';
+import Link from "next/link";
 
 function SuporteForm() {
   const [status, setStatus] = useState<'idle'|'sucesso'|'erro'>('idle');
@@ -153,7 +154,7 @@ export default function SuportePage() {
       <section className="max-w-2xl mx-auto px-4 py-12">
         <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">Experiência dos nossos clientes</h2>
         <div className="bg-kore-cinza/90 rounded-xl p-8 flex flex-col items-center shadow-xl">
-          <Image src="/cliente-exemplo.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
+          <Image src="/blog-images/cliente-exemplo2.jpg" alt="Cliente satisfeito" width={64} height={64} className="rounded-full mb-4 shadow-lg border-2 border-kore-ciano" />
           <blockquote className="italic text-gray-200 text-center mb-2">“O suporte da Kore foi rápido, atencioso e resolveu nosso problema em poucas horas. Excelente atendimento!”</blockquote>
           <span className="font-bold text-kore-destaque">Carlos Souza</span>
           <span className="text-gray-400 text-sm">TI, Empresa Y</span>
@@ -172,7 +173,7 @@ export default function SuportePage() {
               <a href="tel:+5531991282843" className="underline hover:text-kore-destaque">+55 31 99128-2843</a>
             </div>
           </div>
-          <a href="#" className="cta-btn px-8 py-4 text-lg text-center">Abrir Chamado</a>
+          <Link href="/contato" className="cta-btn px-8 py-4 text-lg text-center">Abrir Chamado</Link>
         </div>
       </section>
     </main>

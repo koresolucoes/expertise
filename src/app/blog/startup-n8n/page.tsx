@@ -12,7 +12,7 @@ export default function StartupN8nPage() {
   return (
     <BlogLayout
       title="Como uma Startup Brasileira Escalou com n8n"
-      image="/blog-images/startup-n8n.jpg"
+      image="/blog-images/case-startup-n8n.jpg"
       date="2025-01-25"
       author="Startup Brasil"
       prevHref={prevHref}
@@ -36,16 +36,45 @@ export default function StartupN8nPage() {
       </section>
       {/* CONTEÚDO DO ARTIGO */}
       <section className="max-w-3xl mx-auto px-4 py-8">
-        <p className="text-lg mb-6">Veja como uma startup brasileira inovou ao adotar o n8n para automatizar processos internos, ganhar escala e superar desafios de crescimento.</p>
-        <h2 className="text-2xl font-semibold mt-8 mb-2">Cenário inicial</h2>
+        <h1 className="text-3xl font-extrabold mb-6 text-kore-destaque">Como Startups Podem Escalar com n8n: Guia Prático de Automação</h1>
+        <p className="mb-6 text-lg text-gray-200">
+          Startups precisam crescer rápido, inovar e operar com poucos recursos. Automação é a chave — e o n8n, uma plataforma open source, é um dos maiores aliados para integrar sistemas, eliminar tarefas manuais e escalar operações sem aumentar custos.
+        </p>
+
+        <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">O que é o n8n e por que usar em startups?</h2>
+        <p className="mb-4 text-gray-200">
+          O n8n é uma ferramenta de automação visual, flexível e gratuita, que permite conectar APIs, bancos de dados e SaaS sem depender de código complexo. Ideal para startups por ser open source, fácil de customizar e com comunidade ativa.
+        </p>
+        <ul className="mb-4 list-disc pl-6 text-gray-200">
+          <li>Zero custo de licenciamento</li>
+          <li>Flexibilidade para adaptar a qualquer stack</li>
+          <li>Escalabilidade: de MVP a operações robustas</li>
+          <li>Comunidade global e muitos exemplos prontos</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">Exemplos práticos de automação para startups</h2>
+        <ul className="mb-4 list-disc pl-6 text-gray-200">
+          <li>Geração automática de leads e integração com CRM</li>
+          <li>Envio de e-mails transacionais e marketing automatizado</li>
+          <li>Notificações para times via Slack, WhatsApp ou Discord</li>
+          <li>Automação de onboarding de clientes e usuários</li>
+          <li>Relatórios financeiros e operacionais em tempo real</li>
+          <li>Monitoramento de métricas e alertas automáticos</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-8 mb-2 text-kore-destaque">Storytelling: Como uma startup brasileira escalou com n8n</h2>
+        <p className="mb-4 text-gray-200">
+          Veja como uma startup brasileira inovou ao adotar o n8n para automatizar processos internos, ganhar escala e superar desafios de crescimento.
+        </p>
+        <h3 className="text-xl font-semibold mt-6 mb-2">Cenário inicial</h3>
         <p className="mb-4">A startup enfrentava dificuldades para integrar diferentes sistemas (CRM, atendimento, financeiro) e dependia de tarefas manuais para consolidar dados e acionar notificações.</p>
-        <h2 className="text-2xl font-semibold mt-8 mb-2">Adoção do n8n</h2>
+        <h3 className="text-xl font-semibold mt-6 mb-2">Adoção do n8n</h3>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
           <li>Automação de integração entre CRM e ferramentas de e-mail</li>
           <li>Geração automática de relatórios para o time comercial</li>
           <li>Notificações automáticas para leads quentes</li>
         </ul>
-        <h2 className="text-2xl font-semibold mt-8 mb-2">Resultados alcançados</h2>
+        <h3 className="text-xl font-semibold mt-6 mb-2">Resultados alcançados</h3>
         <ul className="mb-4 list-disc pl-6 text-gray-200">
           <li>Redução de 70% no tempo gasto com tarefas operacionais</li>
           <li>Equipe mais estratégica e focada em crescimento</li>
@@ -57,11 +86,6 @@ export default function StartupN8nPage() {
           <li>Importância de mapear processos antes de automatizar</li>
           <li>Monitoramento constante para evitar falhas</li>
         </ul>
-      </section>
-      {/* DEPOIMENTO DE LEITOR */}
-      <section className="max-w-2xl mx-auto px-4 py-12">
-        <h2 className="text-xl font-bold text-kore-ciano mb-6 text-center">O que dizem nossos leitores</h2>
-
       </section>
       
     </BlogLayout>
