@@ -1,8 +1,11 @@
-import './globals.css'
+import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  preload: true
+})
 
 export const metadata: Metadata = {
   title: 'Kore | Automação Inteligente',
@@ -17,6 +20,9 @@ export const metadata: Metadata = {
     siteName: 'Kore',
   },
   robots: 'index, follow',
+  icons: {
+    icon: '/favicon.ico',
+  }
 }
 
 import MainNav from '@/components/MainNav';
@@ -28,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} bg-azul-petroleo text-white min-h-screen`}>
         <MainNav />
         {children}
-          <Footer />
+        <Footer />
       </body>
     </html>
   )

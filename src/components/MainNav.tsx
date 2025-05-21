@@ -11,7 +11,7 @@ export default function MainNav() {
       <div className="flex w-full max-w-6xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           {/** Prefixo manual para funcionar em qualquer ambiente, inclusive GitHub Pages */}
-          <Image src="/kore-logo.png" alt="Logo Kore" width={40} height={40} unoptimized />
+          <Image src="/kore-logo.png" alt="Logo Kore" width={40} height={40} priority={true} />
           <span className="text-2xl font-bold text-white tracking-wide">Kore</span>
         </Link>
 
