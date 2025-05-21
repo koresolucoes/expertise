@@ -13,7 +13,7 @@ export default function TendenciasAutomacao2025Page() {
   return (
     <BlogLayout
       title="13 Tendências de Automação para 2025 e Como se Preparar"
-      image="/expertise/blog-images/tendencias-automacao-2025.jpg"
+      image="/blog-images/tendencias-automacao-2025.jpg"
       date="2025-02-18"
       author="WebFX"
       prevHref={prevHref}

@@ -16,7 +16,7 @@ export default function BlogPostPage() {
   return (
     <BlogLayout
       title="Integração de APIs sem código: Guia prático"
-      image="/expertise/blog-images/apis-sem-codigo.jpg"
+      image="/blog-images/apis-sem-codigo.jpg"
       date="2024-03-02"
       author="João Silva"
       prevHref={prevHref}
