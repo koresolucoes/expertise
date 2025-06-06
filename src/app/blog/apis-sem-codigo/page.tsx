@@ -1,6 +1,7 @@
 // Estrutura de artigo individual
 import React from 'react'
 import BlogLayout from '@/components/BlogLayout'
+import Link from 'next/link'
 
 
 const nextHref = '/blog/caso-zapier'
