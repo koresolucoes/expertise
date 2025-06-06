@@ -7,6 +7,14 @@ import Image from 'next/image';
 
 const posts = [
   {
+    title: 'Revolução no Atendimento: Como a Venteve está Transformando o Atendimento ao Cliente com IA',
+    summary: 'Descubra como a Venteve está revolucionando o atendimento ao cliente com agentes de voz com IA, proporcionando eficiência e personalização em escala.',
+    date: '2025-06-06',
+    author: 'Equipe Kore Solutions',
+    href: '/blog/ia-atendimento-venteve',
+    image: '/blog-images/blog3.jpeg',
+  },
+  {
     title: 'A Evolução da IA: Como o Hivellm está Moldando o Futuro da Automação',
     summary: 'Explore como o Hivellm está revolucionando a automação com IA generativa, oferecendo soluções avançadas para otimização de processos e produtividade.',
     date: '2025-06-06',
