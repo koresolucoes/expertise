@@ -7,6 +7,14 @@ import Image from 'next/image';
 
 const posts = [
   {
+    title: 'A Evolução da IA: Como o Hivellm está Moldando o Futuro da Automação',
+    summary: 'Explore como o Hivellm está revolucionando a automação com IA generativa, oferecendo soluções avançadas para otimização de processos e produtividade.',
+    date: '2025-06-06',
+    author: 'Equipe Kore Solutions',
+    href: '/blog/evolucao-ia-hivellm',
+    image: '/blog-images/novoBlog.jpeg',
+  },
+  {
     title: 'Guia Definitivo de Automação de Marketing: Estratégias, Ferramentas e Implementação',
     summary: 'Um artigo completo explicando o que é automação de marketing, seus benefícios e passo a passo de implementação com melhores práticas do mercado.',
     date: '2025-04-17',
