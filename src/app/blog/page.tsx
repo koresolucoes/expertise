@@ -7,6 +7,14 @@ import Image from 'next/image';
 
 const posts = [
   {
+    title: 'A Revolução da IA na Arte Tradicional: Como o BackTheBrush está Reconectando o Passado e o Futuro',
+    summary: 'Explore como a IA está transformando a arte tradicional através do BackTheBrush, uma plataforma que conecta artistas e patronos na era digital.',
+    date: '2025-06-06',
+    author: 'Equipe Kore Solutions',
+    href: '/blog/ia-arte-tradicional',
+    image: '/blog-images/blog3.jpg',
+  },
+  {
     title: 'Revolução no Atendimento: Como a Venteve está Transformando o Atendimento ao Cliente com IA',
     summary: 'Descubra como a Venteve está revolucionando o atendimento ao cliente com agentes de voz com IA, proporcionando eficiência e personalização em escala.',
     date: '2025-06-06',
