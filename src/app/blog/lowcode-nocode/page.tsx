@@ -3,7 +3,7 @@ import BlogLayout from '@/components/BlogLayout'
 
 
 const nextHref = '/blog/apis-webhooks'
-const prevHref = '/blog/ia-generativa-automacao'
+const prevHref = '/blog/evolucao-ia-hivellm'
 const suggestions = [
   { href: '/blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },
   { href: '/blog/ia-generativa-automacao', title: 'IA Generativa em Automação de Conteúdo' },

@@ -1,7 +1,7 @@
 import React from 'react'
 import BlogLayout from '@/components/BlogLayout'
 
-const nextHref = '/blog/lowcode-nocode'
+const nextHref = '/blog/evolucao-ia-hivellm'
 const prevHref = '/blog/tendencias-automacao-2025'
 const suggestions = [
   { href: '/blog/lowcode-nocode', title: 'Top 10 Ferramentas Low‑Code/No‑Code' },

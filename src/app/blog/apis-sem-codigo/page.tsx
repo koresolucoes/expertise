@@ -5,8 +5,9 @@ import Link from 'next/link'
 
 
 const nextHref = '/blog/caso-zapier'
-const prevHref = '/blog/automacao-n8n'
+const prevHref = '/blog/evolucao-ia-hivellm'
 const suggestions = [
+  { href: '/blog/evolucao-ia-hivellm', title: 'A Evolução da IA: Como o Hivellm está Moldando o Futuro da Automação' },
   { href: '/blog/apis-webhooks', title: 'APIs e Webhooks: Manual Completo para Integração entre Sistemas' },
   { href: '/blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
   { href: '/blog/comparativo-automacao', title: 'Comparativo das Principais Plataformas de Automação' },

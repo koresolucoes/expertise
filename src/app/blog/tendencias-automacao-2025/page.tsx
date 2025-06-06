@@ -2,9 +2,10 @@ import React from 'react'
 import BlogLayout from '@/components/BlogLayout'
 
 
-const nextHref = '/blog/ia-generativa-automacao'
+const nextHref = '/blog/evolucao-ia-hivellm'
 const prevHref = '/blog/funis-email-marketing'
 const suggestions = [
+  { href: '/blog/evolucao-ia-hivellm', title: 'A Evolução da IA: Como o Hivellm está Moldando o Futuro da Automação' },
   { href: '/blog/ia-generativa-automacao', title: 'IA Generativa em Automação de Conteúdo' },
   { href: '/blog/funis-email-marketing', title: 'Funis de E-mail Marketing Automatizado' },
 ]
