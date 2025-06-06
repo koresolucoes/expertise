@@ -60,6 +60,12 @@ export default function BlogPostPage() {
         <p className="mb-4 text-gray-200">
           Em conclusão, a evolução da IA não se trata apenas de tecnologia; trata-se da transformação dos processos de negócios e da criação de novas oportunidades. A Hivellm é um exemplo primordial de uma plataforma que não apenas acompanha essa evolução, mas que está ativamente moldando o futuro da automação. Ao fornecer ferramentas e insights que reduzem erros humanos e aumentam a eficiência, a Hivellm está ajudando empresas de todos os portes a prosperar em um mundo cada vez mais automatizado. Para aqueles que desejam se manter à frente da curva, adotar plataformas como a Hivellm pode muito bem ser a chave para desbloquear todo o seu potencial neste cenário movido pela IA.
         </p>
+        
+        <div className="mt-8 pt-4 border-t border-gray-700">
+          <p className="text-sm text-gray-400">
+            Fonte: <a href="https://hivellm.com" target="_blank" rel="noopener noreferrer" className="text-kore-destaque hover:underline">hivellm.com</a>
+          </p>
+        </div>
       </section>
     </BlogLayout>
   )
