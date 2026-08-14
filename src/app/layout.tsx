@@ -25,9 +25,6 @@ import Footer from '@/components/Footer';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className="dark">
-      <head>
-        <meta name="clusterseo-verification" content="clusterseo-296eee8bcc4147a5aca56f9a" />
-      </head>
       <body className={`${inter.className} bg-azul-petroleo text-white min-h-screen`}>
         <MainNav />
         {children}
